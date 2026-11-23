@@ -64,6 +64,7 @@ dt{color:var(--redup)}dd{margin:0;text-align:right}
 .ket{font-size:13.5px;color:#b7c4d1;margin:12px 0 0}
 #tas{position:fixed;z-index:40;top:0;right:0;bottom:0;width:min(430px,100%);background:var(--kertas);color:var(--tinta);transform:translateX(102%);visibility:hidden;transition:transform .45s cubic-bezier(.2,.8,.2,1),visibility .45s;padding:26px;overflow:auto}
 body.tas #tas{transform:none;visibility:visible}
+#pindah{position:fixed;z-index:15;left:0;right:0;bottom:20px;display:flex;gap:18px;align-items:center;justify-content:center;transition:opacity .3s}#pindah[hidden]{display:none}#pindah button{min-height:44px;padding:0 16px;border:1px solid var(--garis);border-radius:6px;background:#0a121b99}#pindah button:disabled{opacity:.4;cursor:default}#ket{color:#c9d5e1;font-variant-numeric:tabular-nums}body.detail #pindah{opacity:0;pointer-events:none}
 #navHp{display:none}
 #tirai{position:fixed;inset:0;z-index:30;background:#05090e73;backdrop-filter:blur(7px);opacity:0;visibility:hidden;transition:.35s}
 body.tas #tirai{opacity:1;visibility:visible}
@@ -100,13 +101,14 @@ fieldset{border:0;padding:0;margin:20px 0}legend{font-weight:700;margin-bottom:8
 </style>
 </head>
 <body>
-<header><span class="merek">MHB<i>/</i>STORE</span><span class="contoh">Contoh<span class="lebar"> rancangan, data bukan asli</span></span><nav class="pc"><a href="katalog.html">Semua sepatu</a><a href="lacak.html">Lacak</a><a href="info.html">Bantuan</a></nav><button id="tasBtn">Tas (0)</button></header>
+<header><span class="merek">MHB<i>/</i>STORE</span><span class="contoh">Contoh<span class="lebar"> rancangan, data bukan asli</span></span><nav class="pc"><a href="lacak.html">Lacak</a><a href="info.html">Bantuan</a></nav><button id="tasBtn">Tas (0)</button></header>
 <div id="adegan">
   <div id="saring"><h1>Ukuran saya</h1></div>
   <div id="dinding"><div id="rak"></div></div>
   <div id="besar" aria-hidden="true"></div>
 </div>
 <nav id="navHp" aria-label="Menu HP"></nav>
+<div id="pindah"><button id="sblm">← Sebelumnya</button><span id="ket" aria-live="polite"></span><button id="ssdh">Rak berikutnya →</button></div>
 <section id="judul" aria-live="polite"></section>
 <aside id="panel" aria-label="Detail sepatu"></aside>
 <div id="tirai"></div>
@@ -125,8 +127,8 @@ B.forEach(b=>{const e=document.createElement('button');e.className='slot'+(b.lak
  e.onclick=()=>location.hash='#/'+b.id;slot[b.id]=e;rak.append(e)});
 [null,40,41,42,43,44].forEach(u=>{const e=document.createElement('button');e.className='uk';e.textContent=u||'Semua';e.setAttribute('aria-pressed',u===null);e.onclick=()=>{ukuran=u;document.querySelectorAll('.uk').forEach(x=>x.setAttribute('aria-pressed',x===e));saring()};$('#saring').append(e)});
 $('#saring').insertAdjacentHTML('beforeend','<span id="hitung" aria-live="polite"></span>');
-const tampil=()=>B.filter(b=>!ukuran||b.u===ukuran);
-function saring(){const t=tampil();rak.replaceChildren(...t.map(b=>slot[b.id]));$('#hitung').textContent=t.filter(b=>!b.laku).length+' pasang tersedia';rak.scrollLeft=0;tengah()}
+const hp=()=>matchMedia('(max-width:760px)').matches,tampil=()=>B.filter(b=>!ukuran||b.u===ukuran);let rakKe=0,ujung=0;
+function saring(tetap){const t=tampil();ujung=Math.max(0,Math.ceil(t.length/10)-1);rakKe=tetap===true?Math.min(rakKe,ujung):0;const l=hp()?t:t.slice(rakKe*10,rakKe*10+10);rak.replaceChildren(...l.map(b=>slot[b.id]));$('#pindah').hidden=hp()||!ujung;$('#ket').textContent=`Rak ${rakKe+1} dari ${ujung+1}`;$('#sblm').disabled=rakKe===0;$('#ssdh').disabled=rakKe===ujung;$('#hitung').textContent=t.filter(b=>!b.laku).length+' pasang tersedia';rak.scrollLeft=0;tengah()}
 function tengah(){if(!matchMedia('(max-width:760px)').matches)return;const m=innerWidth/2;let d=1e9,p=null;[...rak.children].forEach(e=>{const r=e.getBoundingClientRect(),x=Math.abs(r.left+r.width/2-m);if(x<d){d=x;p=e}});[...rak.children].forEach(e=>e.classList.toggle('nyala',e===p&&!e.classList.contains('laku')))}
 rak.addEventListener('scroll',tengah,{passive:true});
 function kamera(){const w=$('#dinding');if(!kini||matchMedia('(max-width:760px)').matches){w.style.transform='';return}
@@ -135,7 +137,7 @@ function kamera(){const w=$('#dinding');if(!kini||matchMedia('(max-width:760px)'
  const cx=ruang*.52,cy=innerHeight*.6;w.style.transform=`translate(${cx-(x+W/2)*s}px,${cy-w.offsetTop-(y+H/2)*s}px) scale(${s})`}
 function rute(){const id=location.hash.slice(2),b=B.find(x=>x.id===id);const lama=kini;kini=b||null;
  document.body.classList.toggle('detail',!!b);Object.values(slot).forEach(e=>e.classList.remove('pilih','tetangga','nyala'));
- if(b){if(!slot[id].isConnected){ukuran=null;document.querySelectorAll('.uk').forEach((x,k)=>x.setAttribute('aria-pressed',k===0));saring()}
+ if(b){if(!slot[id].isConnected){ukuran=null;document.querySelectorAll('.uk').forEach((x,k)=>x.setAttribute('aria-pressed',k===0));rakKe=Math.floor(B.indexOf(b)/10);saring(true)}
   const l=[...rak.children],k=l.indexOf(slot[id]);l.forEach((e,m)=>{if(Math.abs(m-k)===1&&Math.floor(m/5)===Math.floor(k/5))e.classList.add('tetangga')});
   slot[id].classList.add('pilih');if(!b.laku)slot[id].classList.add('nyala');panel();$('#besar').innerHTML=sepatu(b)+'<span class="papan"></span>';$('#besar').className=b.laku?'redup':'nyala'}
  else{if(lama)slot[lama.id].focus({preventScroll:true});tengah()}kamera()}
@@ -145,7 +147,7 @@ function panel(){const b=kini;if(!b)return;$('#judul').innerHTML=`<button class=
  else if(b.tahan>0)a=`<button class="btn" disabled>Sedang dibayar, sisa <span id="jam">${m}:${d}</span></button><button class="btn kedua" data-a="kabar">Kabari kalau batal dibayar</button>`;
  else if(b.j==='shopee')a='<button class="btn utama" data-a="shopee">Beli di Shopee</button><p class="ket">Pasang ini dijual di toko Shopee MHB. Pembayaran dan ongkirnya diurus Shopee.</p>';
  else a=`<button class="btn utama" data-a="tas">${di?'Buka tas':'Masukkan tas'}</button><button class="btn kedua" data-a="minta">Minta lewat Shopee</button><p class="ket">Barang baru ditahan saat checkout, belum saat masuk tas.</p>`;
- $('#panel').innerHTML=`<div class="harga">${rp(b.h)}</div><dl><dt>Ukuran</dt><dd>EU ${b.u}</dd><dt>Panjang insole</dt><dd>${b.in.toLocaleString('id-ID')} cm</dd><dt>Kondisi</dt><dd>${{A:'A, hampir tanpa bekas',B:'B, bekas pakai wajar',C:'C, ada cacat jelas'}[b.k]}</dd><dt>Berat kirim</dt><dd>${b.g.toLocaleString('id-ID')} gram</dd></dl><b>Catatan kondisi</b><ul class="cacat">${b.cc.map(x=>`<li>${x}</li>`).join('')}</ul>${a}<p class="ket" id="info" role="status"></p>`;
+ $('#panel').innerHTML=`<div class="harga">${rp(b.h)}</div><dl><dt>Ukuran</dt><dd>EU ${b.u}</dd><dt>Panjang insole</dt><dd>${b.in.toLocaleString('id-ID')} cm</dd><dt>Kondisi</dt><dd>${{A:'A, hampir tanpa bekas',B:'B, bekas pakai wajar',C:'C, ada cacat jelas'}[b.k]}</dd><dt>Berat kirim</dt><dd>${b.g.toLocaleString('id-ID')} gram</dd></dl><b>Catatan kondisi</b><ul class="cacat">${b.cc.map(x=>`<li>${x}</li>`).join('')}</ul>${a}<p class="ket"><a href="sepatu.html#${b.id}" style="color:#9cc7ff">Lihat semua foto</a></p><p class="ket" id="info" role="status"></p>`;
  $('#panel').querySelectorAll('[data-a]').forEach(e=>e.onclick=()=>{const x=e.dataset.a,f=$('#info');
   if(x==='tas'){if(!di)tas.push(b);panel();buka()}if(x==='mirip'){ukuran=b.u;document.querySelectorAll('.uk').forEach(q=>q.setAttribute('aria-pressed',q.textContent==b.u));location.hash='';saring()}
   if(x==='kabar')f.textContent='Contoh: pembeli akan menerima email bila barang tersedia lagi.';if(x==='shopee')f.textContent='Contoh: tombol ini membuka iklan sepatu tersebut di Shopee.';if(x==='minta')f.textContent='Contoh: permintaan masuk ke admin, lalu sepatu dipindah ke Shopee.'})}
@@ -158,10 +160,11 @@ function buka(){isiTas();document.body.classList.add('tas');$('#tas .tutup').foc
 function tutup(){document.body.classList.remove('tas');$('#tasBtn').focus()}
 $('#tasBtn').onclick=buka;$('#tirai').onclick=tutup;
 addEventListener('keydown',e=>{if(e.key==='Escape')document.body.classList.contains('tas')?tutup():location.hash=''});
-addEventListener('hashchange',rute);addEventListener('resize',()=>{kamera();tengah()});
+addEventListener('hashchange',rute);let dulu=hp();addEventListener('resize',()=>{if(dulu!==hp()){dulu=hp();saring(true)}kamera();tengah()});
+$('#sblm').onclick=()=>{rakKe--;saring(true)};$('#ssdh').onclick=()=>{rakKe++;saring(true)};
 setInterval(()=>B.forEach(b=>{if(b.tahan>0){b.tahan--;if(kini===b){const j=$('#jam');if(b.tahan<=0)panel();else if(j)j.textContent=Math.floor(b.tahan/60)+':'+String(b.tahan%60).padStart(2,'0')}}}),1000);
 saring();isiTas();rute();
-$('#navHp').innerHTML=[['katalog','Semua sepatu'],['lacak','Lacak'],['info','Bantuan']].map(([h,t])=>`<a href="${h}.html">${t}</a>`).join('');
+$('#navHp').innerHTML=[['lacak','Lacak'],['info','Bantuan']].map(([h,t])=>`<a href="${h}.html">${t}</a>`).join('');
 </script>
 </body>
 </html>
