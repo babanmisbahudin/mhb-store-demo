@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Checkout – MHB Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet"><link rel="stylesheet" href="gaya.css"></head>
+<body><p class="pita">Contoh rancangan. Tidak ada transaksi, jangan isi data asli.</p><header data-kop></header><main><div id="isi"></div></main><footer></footer>
+<script src="data.js"></script><script>const $$=s=>[...document.querySelectorAll(s)];kerangka('checkout');
+let kur=0;const kg=t=>Math.max(1,Math.ceil(t.reduce((a,b)=>a+b.g,0)/1000));
+const t0=ambilTas();
+if(!t0.length)$('#isi').innerHTML='<h1>Tas masih kosong</h1><p class="ket">Pilih ukuran Anda, lalu masukkan sepatu yang cocok.</p><a class="btn" href="katalog.html">Lihat sepatu</a>';
+else{$('#isi').innerHTML=`<h1>Checkout</h1><p class="ket">Tidak perlu membuat akun.</p><form class="bagi" id="f"><div>
+<section class="kartu"><h2>Penerima</h2><label>Nama<input required autocomplete="off" value="Pembeli Contoh"></label><div class="dua-kol"><label>Nomor WhatsApp<input required type="tel" autocomplete="off" value="080000000000"></label><label>Email<input required type="email" autocomplete="off" value="pembeli@contoh.id"></label></div></section>
+<section class="kartu"><h2>Alamat</h2><label>Kecamatan<small>Ketik minimal 3 huruf</small><input required list="kec" id="kc" placeholder="Contoh: Coblong"></label><datalist id="kec"><option>Coblong, Kota Bandung, Jawa Barat 40132</option><option>Cigasong, Majalengka, Jawa Barat 45476</option><option>Tebet, Jakarta Selatan, DKI Jakarta 12810</option></datalist><label>Alamat lengkap<textarea required rows="2" placeholder="Jalan, nomor rumah, RT/RW">Jalan Contoh No. 1</textarea></label></section>
+<section class="kartu"><h2>Kurir</h2><div id="kr"><p class="ket" style="margin:0">Isi kecamatan untuk melihat ongkir.</p></div></section></div>
+<aside class="kartu"><h2>Ringkasan</h2><div id="rg"></div></aside></form>`;
+const kurirAda=()=>$('#kc').value.length>2;
+function ring(){const t=ambilTas(),s=t.reduce((a,b)=>a+b.h,0),o=kurirAda()?K[kur][2]*kg(t):0;$('#rg').innerHTML=t.map((b,i)=>`<div class="baris"><div class="kecil">${sepatu(b)}</div><div><b>${b.n}</b><small>EU ${b.u}</small>${rp(b.h)}</div><button type="button" class="btn garis" style="min-height:40px;padding:6px 10px" data-h="${i}" aria-label="Hapus ${b.n}">Hapus</button></div>`).join('')+`<div style="height:12px"></div><div class="jml"><span>Sepatu</span><span>${rp(s)}</span></div><div class="jml"><span>Ongkir</span><span>${kurirAda()?rp(o):'Belum dihitung'}</span></div><div class="jml t"><span>Total</span><span>${rp(s+o)}</span></div><div class="lekat"><button class="btn penuh" ${kurirAda()?'':'disabled'}>Buat pesanan</button></div><p class="ket" style="margin:12px 0 0">Sepatu ditahan 60 menit setelah pesanan dibuat.</p>`;
+$$('[data-h]').forEach(e=>e.onclick=()=>{const t=ambilTas();t.splice(+e.dataset.h,1);simpanTas(t);t.length?ring():location.reload();kerangka('checkout')})}
+$('#kc').oninput=()=>{if(kurirAda()&&!$('[name=k]')){$('#kr').innerHTML=K.map((x,i)=>`<label class="opsi"><input type="radio" name="k" value="${i}" ${i===kur?'checked':''}><span>${x[0]}<small>${x[1]}${i===0?', termurah':''}</small></span><b>${rp(x[2]*kg(ambilTas()))}</b></label>`).join('');$$('[name=k]').forEach(e=>e.onchange=()=>{kur=+e.value;ring()})}if(!kurirAda())$('#kr').innerHTML='<p class="ket" style="margin:0">Isi kecamatan untuk melihat ongkir.</p>';ring()};
+$('#f').onsubmit=e=>{e.preventDefault();const t=ambilTas();try{localStorage.totalMhb=t.reduce((a,b)=>a+b.h,0)+K[kur][2]*kg(t)}catch{}location.href='bayar.html'};ring()}</script></body></html>

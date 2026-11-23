@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Hari ini – MHB Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet"><link rel="stylesheet" href="gaya.css"></head>
+<body><p class="pita">Contoh rancangan. Tidak ada transaksi, jangan isi data asli.</p><header data-admin></header><main><h1>Hari ini</h1><p class="ket">Selesaikan dari atas ke bawah. Kalau daftar pertama kosong, toko sehat.</p>
+<section class="kartu"><h2>Perlu tindakan</h2><div id="pt"></div></section><section class="kartu"><h2>Siap dikemas</h2><div id="sk"></div></section><section class="kartu"><h2>Cek Shopee</h2><p class="ket">Sepatu jalur Shopee yang belum dicek hari ini.</p><div id="cs"></div></section></main><footer></footer>
+<script src="data.js"></script><script>const $$=s=>[...document.querySelectorAll(s)];kerangka('admin');
+const P=[['Uang masuk setelah waktu habis','TK-4M8RZ2, sepatu sudah terjual','Kembalikan dana'],['Paket tertahan','TK-7K3QX9, J&T, 2 hari','Hubungi kurir'],['Minta lewat Shopee','Suede Marun, dari pembeli','Pindahkan']];
+const sel='<span class="tanda ok">Selesai</span>',kosong='<p class="ket" style="margin:0">Tidak ada. Semua beres.</p>';
+function daftar(id,a){$(id).innerHTML=a.map(x=>`<div class="baris"><div style="flex:1"><b>${x[0]}</b><small>${x[1]}</small></div><span><button class="btn garis">${x[2]}</button></span></div>`).join('')||kosong;$$(id+' button').forEach(e=>e.onclick=()=>e.parentElement.innerHTML=sel)}
+daftar('#pt',P);daftar('#sk',[['TK-9C2LD4','Court Navy, J&T EZ','Buat kiriman'],['TK-1H6WN8','Lari Abu, JNE REG','Buat kiriman']]);daftar('#cs',B.filter(b=>b.j==='shopee').map(b=>[b.n,'EU '+b.u+', '+rp(b.h),'Sudah laku']));</script></body></html>

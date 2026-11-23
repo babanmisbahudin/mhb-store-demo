@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Lacak pesanan – MHB Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet"><link rel="stylesheet" href="gaya.css"></head>
+<body><p class="pita">Contoh rancangan. Tidak ada transaksi, jangan isi data asli.</p><header data-kop></header><main class="sempit"><h1>Lacak pesanan</h1><p class="ket">Masukkan nomor pesanan dan email atau nomor WhatsApp yang dipakai saat memesan.</p>
+<form class="kartu" id="f"><div class="dua-kol"><label>Nomor pesanan<input required value="TK-7K3QX9"></label><label>Email atau WhatsApp<input required value="pembeli@contoh.id"></label></div><button class="btn">Lacak</button></form>
+<div class="kartu" id="h" hidden><div class="dua"><h2>TK-7K3QX9</h2><span id="tn"></span></div><p class="ket" id="ks"></p><ol class="garis-waktu" id="gw"></ol><div id="ak"></div><div class="info-demo">Lihat keadaan lain: <span class="pil" style="margin:8px 0 0"><button data-s="0">Dikemas</button><button data-s="1">Di jalan</button><button data-s="2">Tertahan</button><button data-s="3">Sampai</button></span></div></div></main><footer></footer>
+<script src="data.js"></script><script>const $$=s=>[...document.querySelectorAll(s)];kerangka('lacak');
+const L=[['Pesanan dibayar','23 Nov, 10.12'],['Dikemas','23 Nov, 14.30'],['Diserahkan ke J&T','24 Nov, 09.05'],['Dalam perjalanan ke Bandung','24 Nov, 20.41'],['Sampai, diterima di rumah','25 Nov, 13.20']];
+const S=[[2,'Dikemas','','Sepatu sedang dikemas. Resi muncul setelah kurir mengambil.'],[4,'Di jalan','','J&T EZ, resi contoh JX0000000000.'],[4,'Tertahan','awas','Paket tertahan di kurir. Kami sedang menghubungi J&T, Anda tidak perlu melakukan apa pun.'],[5,'Sampai','ok','Tidak sesuai deskripsi? Ajukan retur dalam 7 hari.']];
+function set(i){const x=S[i];$('#tn').innerHTML=`<span class="tanda ${x[2]}">${x[1]}</span>`;$('#ks').textContent=x[3];$('#gw').innerHTML=L.slice(0,x[0]).reverse().map((l,k)=>`<li class="${k?'':'kini'}"><b>${l[0]}</b><small>${l[1]}</small></li>`).join('');$('#ak').innerHTML=i===3?'<a class="btn garis" href="retur.html">Ajukan retur</a>':'';$$('[data-s]').forEach((e,k)=>e.setAttribute('aria-pressed',k===i))}
+$$('[data-s]').forEach((e,i)=>e.onclick=()=>set(i));$('#f').onsubmit=e=>{e.preventDefault();$('#h').hidden=false;set(1)};</script></body></html>
