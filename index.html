@@ -1,7 +1,167 @@
 <!doctype html>
-<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
-<title>Semua halaman – MHB Store</title>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet"><link rel="stylesheet" href="gaya.css"></head>
-<body><p class="pita">Contoh rancangan. Tidak ada transaksi, jangan isi data asli.</p><header data-kop></header><main class="sempit"><h1>Rancangan MHB Store</h1><p class="ket">13 halaman, semuanya punya tampilan PC dan HP. Produk dan harga hanya contoh.</p><p><a class="btn" href="pratinjau.html">Lihat PC dan HP berdampingan</a></p><section class="kartu"><h2>Pembeli</h2><div class="baris"><div style="flex:1"><b>Etalase</b><small>Beranda bergaya museum</small></div><a class="btn garis" href="etalase.html">Buka</a></div><div class="baris"><div style="flex:1"><b>Semua sepatu</b><small>Cari, saring ukuran, urutkan</small></div><a class="btn garis" href="katalog.html">Buka</a></div><div class="baris"><div style="flex:1"><b>Detail sepatu</b><small>Insole, kondisi, jalur beli</small></div><a class="btn garis" href="sepatu.html">Buka</a></div><div class="baris"><div style="flex:1"><b>Checkout</b><small>Alamat, kurir, ringkasan</small></div><a class="btn garis" href="checkout.html">Buka</a></div><div class="baris"><div style="flex:1"><b>Pembayaran</b><small>Menunggu, dicek, lunas, habis</small></div><a class="btn garis" href="bayar.html">Buka</a></div><div class="baris"><div style="flex:1"><b>Lacak pesanan</b><small>Linimasa paket</small></div><a class="btn garis" href="lacak.html">Buka</a></div><div class="baris"><div style="flex:1"><b>Retur</b><small>Formulir pengembalian</small></div><a class="btn garis" href="retur.html">Buka</a></div><div class="baris"><div style="flex:1"><b>Bantuan</b><small>Ukuran, kondisi, kebijakan</small></div><a class="btn garis" href="info.html">Buka</a></div></section><section class="kartu"><h2>Pengelola</h2><div class="baris"><div style="flex:1"><b>Masuk</b><small>Halaman masuk</small></div><a class="btn garis" href="admin-masuk.html">Buka</a></div><div class="baris"><div style="flex:1"><b>Hari ini</b><small>Perlu tindakan</small></div><a class="btn garis" href="admin.html">Buka</a></div><div class="baris"><div style="flex:1"><b>Pesanan</b><small>Daftar dan kiriman</small></div><a class="btn garis" href="admin-pesanan.html">Buka</a></div><div class="baris"><div style="flex:1"><b>Barang</b><small>Status dan jalur jual</small></div><a class="btn garis" href="admin-barang.html">Buka</a></div><div class="baris"><div style="flex:1"><b>Tambah sepatu</b><small>Untuk HP</small></div><a class="btn garis" href="admin-tambah.html">Buka</a></div></section></main><footer></footer>
-<script src="data.js"></script><script>const $$=s=>[...document.querySelectorAll(s)];kerangka('index');
-</script></body></html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>MHB Store – Contoh etalase</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
+<style>
+:root{--dinding:#16222f;--gelap:#0a121b;--oranye:#fc6a0c;--biru:#4c9bff;--teks:#eef3f8;--redup:#a3b2c2;--garis:#ffffff24;--kertas:#f4f6f8;--tinta:#0c1824;--gerak:850ms cubic-bezier(.7,0,.15,1)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--gelap);color:var(--teks);font:400 15px/1.5 Archivo,system-ui,sans-serif;overflow:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--biru);outline-offset:3px;border-radius:4px}
+#adegan{position:fixed;inset:0;overflow:hidden;background:radial-gradient(90% 75% at 50% 38%,#33475b 0,var(--dinding) 52%,var(--gelap) 100%)}
+#adegan:after{content:"";position:absolute;inset:auto 0 0;height:17%;background:linear-gradient(#0000,#05090e);pointer-events:none}
+header{position:fixed;inset:0 0 auto;z-index:20;display:flex;align-items:center;gap:20px;padding:18px 32px}
+.merek{font-weight:800;font-stretch:112%;letter-spacing:.04em;font-size:18px}
+.merek i{font-style:normal;color:var(--oranye)}
+.contoh{font-size:12px;color:var(--redup);border:1px solid var(--garis);padding:2px 8px;border-radius:4px}
+nav{margin-left:auto;display:flex;gap:22px}nav a{color:var(--teks);text-decoration:none;padding:8px 0}nav a:hover{text-decoration:underline}
+#tasBtn{white-space:nowrap;background:var(--kertas);color:var(--tinta);padding:10px 18px;border-radius:6px;font-weight:600}
+#saring{position:fixed;z-index:15;top:84px;left:32px;right:32px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;transition:opacity .3s}
+#saring h1{font-size:22px;font-stretch:108%;font-weight:700;margin:0 14px 0 0;letter-spacing:-.01em}
+.uk{min-width:44px;height:40px;border:1px solid var(--garis);border-radius:6px;padding:0 11px;color:var(--teks)}
+.uk[aria-pressed=true]{background:var(--teks);color:var(--tinta);font-weight:700;border-color:var(--teks)}
+#hitung{color:var(--redup);margin-left:8px}
+#dinding{position:absolute;left:0;right:0;top:150px;bottom:70px;transform-origin:0 0;transition:transform var(--gerak)}
+#rak{height:100%;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(2,1fr);max-height:560px;padding:0 4vw;column-gap:2.2vw}
+.slot{position:relative;display:block;width:100%;padding:0;text-align:left;transition:opacity .5s}
+.kerucut{position:absolute;left:-22%;right:-22%;top:-210px;height:470px;pointer-events:none;filter:blur(16px);transition:opacity .5s}
+.kerucut:before{content:"";position:absolute;inset:0;background:linear-gradient(#e8f1ff80,#e8f1ff30 55%,#0000);clip-path:polygon(42% 0,58% 0,86% 100%,14% 100%)}
+.slot:nth-child(n+6) .kerucut{display:none}
+.isi{position:absolute;left:0;right:0;bottom:76px}
+.isi svg{display:block;width:100%;overflow:visible;filter:drop-shadow(0 7px 5px #0009);position:relative;z-index:2;transition:filter .4s}
+.tepi{position:absolute;inset:-12% -8% 0;background:radial-gradient(50% 50% at 50% 60%,#b9d2ec4d,#0000);z-index:0}
+.kursor{position:absolute;inset:-30% -14% -18%;z-index:3;mix-blend-mode:soft-light;opacity:0;transition:opacity .35s;pointer-events:none;background:radial-gradient(150px circle at var(--x,50%) var(--y,50%),#fff,#0000 70%);-webkit-mask:radial-gradient(50% 50% at 50% 50%,#000 45%,#0000);mask:radial-gradient(50% 50% at 50% 50%,#000 45%,#0000)}
+.papan{position:absolute;left:-4%;right:-4%;top:calc(100% - 3px);height:9px;border-radius:2px;background:linear-gradient(#ffffff8c,#ffffff24 45%,#00000059);z-index:1}
+.papan:before{content:"";position:absolute;inset:5px 4% auto;height:3px;border-radius:3px;background:#fff3e6;box-shadow:0 0 8px 2px var(--oranye),0 6px 26px 8px var(--oranye);opacity:0;transition:opacity .35s}
+.papan:after{content:"";position:absolute;left:0;right:0;top:8px;height:70px;background:radial-gradient(50% 100% at 50% 0,#fc6a0cb0,#0000);opacity:0;transition:opacity .35s}
+.nyala .papan:before,.nyala .papan:after,.nyala .kursor{opacity:1}
+.kartu{position:absolute;left:0;right:0;top:calc(100% + 13px);display:flex;justify-content:space-between;gap:8px;align-items:baseline;z-index:4;font-size:13.5px;transition:opacity .3s;text-shadow:0 1px 4px #000b}
+.kartu b{font-weight:600}.kartu span{white-space:nowrap}
+.kartu .stt{position:absolute;top:21px;left:0;font-size:12.5px;color:#d6e0ea}
+.laku .isi svg{filter:grayscale(1) brightness(.42)}.laku .tepi{opacity:.25}
+.laku .kartu{color:var(--redup)}
+body.detail .kartu,body.detail .kerucut{opacity:0}
+body.detail .slot:not(.pilih):not(.tetangga){opacity:0;pointer-events:none}
+body.detail #saring{opacity:0;pointer-events:none}
+#judul,#panel{position:fixed;z-index:18;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+body.detail #judul,body.detail #panel{opacity:1;visibility:visible;transition-delay:.45s}
+#judul{left:32px;top:92px;max-width:min(46vw,560px)}
+#judul h2{font-size:clamp(30px,4vw,58px);line-height:1;margin:14px 0 8px;font-stretch:114%;font-weight:800;letter-spacing:-.025em;text-wrap:balance}
+#judul p{margin:0;color:#c9d5e1}
+.balik{border:1px solid var(--garis);border-radius:6px;padding:9px 14px;background:#0a121b80}
+#panel{right:32px;top:92px;max-height:calc(100% - 120px);width:348px;overflow:auto;background:#0b141eeb;border:1px solid var(--garis);border-radius:10px;padding:22px}
+.harga{font-size:30px;font-weight:700;font-variant-numeric:tabular-nums}
+dl{display:grid;grid-template-columns:auto 1fr;gap:7px 16px;margin:16px 0;padding:16px 0;border:solid var(--garis);border-width:1px 0}
+dt{color:var(--redup)}dd{margin:0;text-align:right}
+.cacat{margin:0 0 16px;padding-left:18px;color:#d6e0ea}
+.btn{display:block;width:100%;text-align:center;padding:14px;border-radius:7px;font-weight:700;margin-top:10px}
+.utama{background:var(--oranye);color:#190a00}.kedua{border:1px solid #ffffff59}
+.btn[disabled]{background:#26323f;color:#b4c0cc;cursor:not-allowed}
+.ket{font-size:13.5px;color:#b7c4d1;margin:12px 0 0}
+#tas{position:fixed;z-index:40;top:0;right:0;bottom:0;width:min(430px,100%);background:var(--kertas);color:var(--tinta);transform:translateX(102%);visibility:hidden;transition:transform .45s cubic-bezier(.2,.8,.2,1),visibility .45s;padding:26px;overflow:auto}
+body.tas #tas{transform:none;visibility:visible}
+#navHp{display:none}
+#tirai{position:fixed;inset:0;z-index:30;background:#05090e73;backdrop-filter:blur(7px);opacity:0;visibility:hidden;transition:.35s}
+body.tas #tirai{opacity:1;visibility:visible}
+#tas h3{margin:0 0 18px;font-size:24px;font-stretch:108%}
+#tas .tutup{float:right;padding:6px 10px;min-height:44px;text-decoration:underline}
+.baris{display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid #0c182526}
+.baris .kecil{width:92px;background:#1b2a39;border-radius:6px;padding:8px;flex:none}.baris svg{width:100%;display:block}
+.baris div:nth-child(2){flex:1}.baris small{color:#4b5a68;display:block;font-size:13.5px}
+.baris button{text-decoration:underline;font-size:13.5px;min-height:44px;padding:0 6px}
+fieldset{border:0;padding:0;margin:20px 0}legend{font-weight:700;margin-bottom:8px;padding:0}
+.kurir{display:flex;gap:10px;align-items:center;padding:11px 12px;border:1px solid #0c182540;border-radius:7px;margin-bottom:8px;cursor:pointer}
+.kurir:has(:checked){border-color:var(--tinta);box-shadow:inset 0 0 0 1px var(--tinta)}
+.kurir input{accent-color:#c84a00}.kurir span{flex:1}.kurir small{display:block;color:#4b5a68}
+.jml{display:flex;justify-content:space-between;padding:4px 0;font-variant-numeric:tabular-nums}.jml.t{font-weight:800;font-size:19px;padding-top:12px}
+#pesan{margin-top:12px;padding:12px;border-radius:7px;background:#0c182512}
+#pesan:empty{display:none}
+@media(max-width:760px){
+ header{padding:14px 16px;gap:12px}.pc{display:none!important}#tasBtn{margin-left:auto;min-height:44px}#navHp{display:flex!important;position:fixed;z-index:15;left:0;right:0;bottom:0;margin:0;justify-content:space-around;padding:6px 8px 12px;background:#0a121bcc;border-top:1px solid var(--garis)}#navHp a{min-height:44px;display:flex;align-items:center}.balik{min-height:44px}#tasBtn{padding:9px 14px}
+ #saring{top:66px;left:0;right:0;padding:0 16px;gap:8px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+ #saring h1{font-size:16px;white-space:nowrap;margin:0}#hitung{display:none}.uk{height:44px;flex:none}
+ .lebar{display:none}#dinding{top:0;bottom:0;transform:none!important}
+ #rak{display:flex;max-height:none;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 13vw;gap:8vw;scrollbar-width:none}
+ .slot{flex:0 0 74vw;scroll-snap-align:center;height:100%}
+ .isi{bottom:34%}.slot .kerucut{display:block!important;height:66%;top:-30px;opacity:.25}.slot.nyala .kerucut{opacity:1}
+ .kartu{font-size:17px;top:calc(100% + 24px)}.kartu .stt{top:27px;font-size:14.5px}
+ body.detail #dinding{opacity:0;pointer-events:none}#dinding{transition:opacity .3s}
+ #judul{left:16px;right:16px;top:70px;max-width:none}#judul h2{font-size:30px;margin:10px 0 2px}
+ #panel{scrollbar-width:thin;scrollbar-color:#ffffff40 #0000;left:0;right:0;top:auto;bottom:0;width:auto;height:52%;max-height:none;border-radius:14px 14px 0 0;padding:20px 18px 28px}
+ #besar{display:block!important}
+}
+#besar{display:none;position:fixed;z-index:16;left:9vw;right:9vw;bottom:55%;opacity:0;pointer-events:none;transition:opacity .4s .2s}
+#besar .papan{height:8px}#besar.redup svg{filter:grayscale(1) brightness(.45)}body.detail #besar{opacity:1}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;transition-delay:0s!important}}
+</style>
+</head>
+<body>
+<header><span class="merek">MHB<i>/</i>STORE</span><span class="contoh">Contoh<span class="lebar"> rancangan, data bukan asli</span></span><nav class="pc"><a href="katalog.html">Semua sepatu</a><a href="lacak.html">Lacak</a><a href="info.html">Bantuan</a></nav><button id="tasBtn">Tas (0)</button></header>
+<div id="adegan">
+  <div id="saring"><h1>Ukuran saya</h1></div>
+  <div id="dinding"><div id="rak"></div></div>
+  <div id="besar" aria-hidden="true"></div>
+</div>
+<nav id="navHp" aria-label="Menu HP"></nav>
+<section id="judul" aria-live="polite"></section>
+<aside id="panel" aria-label="Detail sepatu"></aside>
+<div id="tirai"></div>
+<aside id="tas" aria-label="Tas belanja"></aside>
+<script src="data.js"></script>
+<script>
+let ukuran=null,kini=null,tas=ambilTas(),kurir=0;
+const rak=$('#rak'),slot={};
+B.forEach(b=>{const e=document.createElement('button');e.className='slot'+(b.laku?' laku':'');e.setAttribute('aria-label',`${b.n}, ukuran ${b.u}, ${rp(b.h)}, ${stt(b)}`);
+ e.innerHTML=`<span class="kerucut"></span><span class="isi"><span class="tepi"></span>${sepatu(b)}<span class="kursor"></span><span class="papan"></span><span class="kartu"><b>${b.n}</b><span>${b.u} · ${rp(b.h)}</span><span class="stt">${stt(b)}</span></span></span>`;
+ e.onpointermove=v=>{const k=e.querySelector('.kursor'),r=k.getBoundingClientRect();k.style.setProperty('--x',v.clientX-r.left+'px');k.style.setProperty('--y',v.clientY-r.top+'px')};
+ const ponsel=()=>matchMedia('(max-width:760px)').matches;
+ e.onpointerenter=()=>{if(!ponsel()&&!b.laku)e.classList.add('nyala')};
+ e.onpointerleave=e.onblur=()=>{if(!ponsel()&&kini!==b)e.classList.remove('nyala')};
+ e.onfocus=()=>{if(!ponsel()&&!b.laku)e.classList.add('nyala')};
+ e.onclick=()=>location.hash='#/'+b.id;slot[b.id]=e;rak.append(e)});
+[null,40,41,42,43,44].forEach(u=>{const e=document.createElement('button');e.className='uk';e.textContent=u||'Semua';e.setAttribute('aria-pressed',u===null);e.onclick=()=>{ukuran=u;document.querySelectorAll('.uk').forEach(x=>x.setAttribute('aria-pressed',x===e));saring()};$('#saring').append(e)});
+$('#saring').insertAdjacentHTML('beforeend','<span id="hitung" aria-live="polite"></span>');
+const tampil=()=>B.filter(b=>!ukuran||b.u===ukuran);
+function saring(){const t=tampil();rak.replaceChildren(...t.map(b=>slot[b.id]));$('#hitung').textContent=t.filter(b=>!b.laku).length+' pasang tersedia';rak.scrollLeft=0;tengah()}
+function tengah(){if(!matchMedia('(max-width:760px)').matches)return;const m=innerWidth/2;let d=1e9,p=null;[...rak.children].forEach(e=>{const r=e.getBoundingClientRect(),x=Math.abs(r.left+r.width/2-m);if(x<d){d=x;p=e}});[...rak.children].forEach(e=>e.classList.toggle('nyala',e===p&&!e.classList.contains('laku')))}
+rak.addEventListener('scroll',tengah,{passive:true});
+function kamera(){const w=$('#dinding');if(!kini||matchMedia('(max-width:760px)').matches){w.style.transform='';return}
+ const e=slot[kini.id],isi=e.querySelector('.isi');let x=0,y=0,n=isi;while(n&&n!==w){x+=n.offsetLeft;y+=n.offsetTop;n=n.offsetParent}
+ const W=isi.offsetWidth,H=isi.offsetHeight,ruang=innerWidth-400,s=Math.min(ruang*.66,innerHeight*1.05)/W;
+ const cx=ruang*.52,cy=innerHeight*.6;w.style.transform=`translate(${cx-(x+W/2)*s}px,${cy-w.offsetTop-(y+H/2)*s}px) scale(${s})`}
+function rute(){const id=location.hash.slice(2),b=B.find(x=>x.id===id);const lama=kini;kini=b||null;
+ document.body.classList.toggle('detail',!!b);Object.values(slot).forEach(e=>e.classList.remove('pilih','tetangga','nyala'));
+ if(b){if(!slot[id].isConnected){ukuran=null;document.querySelectorAll('.uk').forEach((x,k)=>x.setAttribute('aria-pressed',k===0));saring()}
+  const l=[...rak.children],k=l.indexOf(slot[id]);l.forEach((e,m)=>{if(Math.abs(m-k)===1&&Math.floor(m/5)===Math.floor(k/5))e.classList.add('tetangga')});
+  slot[id].classList.add('pilih');if(!b.laku)slot[id].classList.add('nyala');panel();$('#besar').innerHTML=sepatu(b)+'<span class="papan"></span>';$('#besar').className=b.laku?'redup':'nyala'}
+ else{if(lama)slot[lama.id].focus({preventScroll:true});tengah()}kamera()}
+function panel(){const b=kini;if(!b)return;$('#judul').innerHTML=`<button class="balik">← Etalase</button><h2>${b.n}</h2><p>Satu pasang saja. Ukuran ${b.u}, kondisi ${b.k}.</p>`;$('#judul .balik').onclick=()=>location.hash='';
+ const di=tas.includes(b),m=Math.floor(b.tahan/60),d=String(b.tahan%60).padStart(2,'0');let a;
+ if(b.laku)a='<button class="btn" disabled>Sudah terjual</button><button class="btn kedua" data-a="mirip">Lihat ukuran '+b.u+' lainnya</button>';
+ else if(b.tahan>0)a=`<button class="btn" disabled>Sedang dibayar, sisa <span id="jam">${m}:${d}</span></button><button class="btn kedua" data-a="kabar">Kabari kalau batal dibayar</button>`;
+ else if(b.j==='shopee')a='<button class="btn utama" data-a="shopee">Beli di Shopee</button><p class="ket">Pasang ini dijual di toko Shopee MHB. Pembayaran dan ongkirnya diurus Shopee.</p>';
+ else a=`<button class="btn utama" data-a="tas">${di?'Buka tas':'Masukkan tas'}</button><button class="btn kedua" data-a="minta">Minta lewat Shopee</button><p class="ket">Barang baru ditahan saat checkout, belum saat masuk tas.</p>`;
+ $('#panel').innerHTML=`<div class="harga">${rp(b.h)}</div><dl><dt>Ukuran</dt><dd>EU ${b.u}</dd><dt>Panjang insole</dt><dd>${b.in.toLocaleString('id-ID')} cm</dd><dt>Kondisi</dt><dd>${{A:'A, hampir tanpa bekas',B:'B, bekas pakai wajar',C:'C, ada cacat jelas'}[b.k]}</dd><dt>Berat kirim</dt><dd>${b.g.toLocaleString('id-ID')} gram</dd></dl><b>Catatan kondisi</b><ul class="cacat">${b.cc.map(x=>`<li>${x}</li>`).join('')}</ul>${a}<p class="ket" id="info" role="status"></p>`;
+ $('#panel').querySelectorAll('[data-a]').forEach(e=>e.onclick=()=>{const x=e.dataset.a,f=$('#info');
+  if(x==='tas'){if(!di)tas.push(b);panel();buka()}if(x==='mirip'){ukuran=b.u;document.querySelectorAll('.uk').forEach(q=>q.setAttribute('aria-pressed',q.textContent==b.u));location.hash='';saring()}
+  if(x==='kabar')f.textContent='Contoh: pembeli akan menerima email bila barang tersedia lagi.';if(x==='shopee')f.textContent='Contoh: tombol ini membuka iklan sepatu tersebut di Shopee.';if(x==='minta')f.textContent='Contoh: permintaan masuk ke admin, lalu sepatu dipindah ke Shopee.'})}
+function isiTas(){simpanTas(tas);$('#tasBtn').textContent=`Tas (${tas.length})`;const sub=tas.reduce((a,b)=>a+b.h,0),kg=Math.max(1,Math.ceil(tas.reduce((a,b)=>a+b.g,0)/1000)),ong=tas.length?K[kurir][2]*kg:0;
+ $('#tas').innerHTML=`<button class="tutup">Tutup</button><h3>Tas</h3>`+(tas.length?tas.map((b,k)=>`<div class="baris"><div class="kecil">${sepatu(b)}</div><div><b>${b.n}</b><small>EU ${b.u} · insole ${b.in.toLocaleString('id-ID')} cm</small>${rp(b.h)}</div><button data-h="${k}">Hapus</button></div>`).join('')+`<fieldset><legend>Kirim ke Bandung, ${kg} kg (contoh tarif)</legend>${K.map((x,k)=>`<label class="kurir"><input type="radio" name="k" value="${k}" ${k===kurir?'checked':''}><span>${x[0]}<small>${x[1]}</small></span><b>${rp(x[2]*kg)}</b></label>`).join('')}</fieldset><div class="jml"><span>Sepatu</span><span>${rp(sub)}</span></div><div class="jml"><span>Ongkir</span><span>${rp(ong)}</span></div><div class="jml t"><span>Total</span><span>${rp(sub+ong)}</span></div><button class="btn utama" id="bayar">Lanjut ke checkout</button><div id="pesan" role="status"></div>`:'<p>Tas masih kosong. Pilih ukuran Anda di etalase, lalu klik sepatunya.</p>');
+ $('#tas .tutup').onclick=tutup;$('#tas').querySelectorAll('[data-h]').forEach(e=>e.onclick=()=>{tas.splice(+e.dataset.h,1);isiTas();panel()});
+ $('#tas').querySelectorAll('[name=k]').forEach(e=>e.onchange=()=>{kurir=+e.value;isiTas();$(`#tas [value="${kurir}"]`).focus()});
+ if($('#bayar'))$('#bayar').onclick=()=>location.href='checkout.html'}
+function buka(){isiTas();document.body.classList.add('tas');$('#tas .tutup').focus()}
+function tutup(){document.body.classList.remove('tas');$('#tasBtn').focus()}
+$('#tasBtn').onclick=buka;$('#tirai').onclick=tutup;
+addEventListener('keydown',e=>{if(e.key==='Escape')document.body.classList.contains('tas')?tutup():location.hash=''});
+addEventListener('hashchange',rute);addEventListener('resize',()=>{kamera();tengah()});
+setInterval(()=>B.forEach(b=>{if(b.tahan>0){b.tahan--;if(kini===b){const j=$('#jam');if(b.tahan<=0)panel();else if(j)j.textContent=Math.floor(b.tahan/60)+':'+String(b.tahan%60).padStart(2,'0')}}}),1000);
+saring();isiTas();rute();
+$('#navHp').innerHTML=[['katalog','Semua sepatu'],['lacak','Lacak'],['info','Bantuan']].map(([h,t])=>`<a href="${h}.html">${t}</a>`).join('');
+</script>
+</body>
+</html>
