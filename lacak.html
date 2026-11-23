@@ -11,7 +11,7 @@
 <script src="data.js"></script><script>const $$=s=>[...document.querySelectorAll(s)];kerangka('lacak');
 const L=[['Pesanan dibayar','23 Nov, 10.12'],['Dikemas','23 Nov, 14.30'],['Diserahkan ke J&T','24 Nov, 09.05'],['Dalam perjalanan ke Bandung','24 Nov, 20.41'],['Sampai, diterima di rumah','25 Nov, 13.20']];
 const S=[[2,'Dikemas','','Sepatu sedang dikemas. Resi muncul setelah kurir mengambil.','kemas'],[4,'Di jalan','','J&T EZ, resi contoh JX0000000000.','jalan'],[4,'Tertahan','awas','Paket tertahan di kurir. Kami sedang menghubungi J&T, Anda tidak perlu melakukan apa pun.','tahan'],[5,'Sampai','ok','Tidak sesuai deskripsi? Ajukan retur dalam 7 hari.','sampai']];
-let br=B[4];try{br=B.find(b=>b.id===localStorage.sepatuMhb)||br}catch{}$('#sp').innerHTML=sepatu(br);$('#kt').innerHTML=kotak(sepatu(br));$('#mb').innerHTML=mobil();
+const br=brg('court-bata');$('#sp').innerHTML=sepatu(br);$('#kt').innerHTML=kotak(sepatu(br));$('#mb').innerHTML=mobil();
 const U=['sepi','bayar','kemas','jalan','sampai'];let kode=0;
 async function gerak(t){const k=++kode,j=$('#jl'),akhir=t==='tahan'?'jalan':t;let n=U.indexOf(j.dataset.t==='tahan'?'jalan':j.dataset.t),m=U.indexOf(akhir);if(n>m){j.classList.add('lompat');j.dataset.t='sepi';void j.offsetWidth;j.classList.remove('lompat');n=0}
 while(n<m){n++;j.dataset.t=U[n];await tunda(U[n]==='bayar'?700:U[n]==='kemas'?2100:1900);if(k!==kode)return}j.dataset.t=t}
