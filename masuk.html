@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Masuk atau daftar – MHB Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet"><link rel="stylesheet" href="gaya.css"></head>
+<body><p class="pita">Contoh rancangan. Tidak ada transaksi, jangan isi data asli.</p><header data-kop></header><main class="sempit"><h1 id="j">Masuk atau daftar</h1><p class="ket" id="k">Tidak wajib. Anda tetap bisa membeli tanpa akun. Dengan akun, alamat tersimpan dan Anda dikabari saat ukuran Anda datang.</p>
+<form class="kartu" id="f1"><label>Email<input value="pembeli@contoh.id" disabled></label><button class="btn penuh">Kirim kode</button><p class="ket" style="margin:12px 0 0">Tanpa kata sandi. Kode 6 angka dikirim ke email, untuk akun baru maupun lama.</p></form>
+<form class="kartu" id="f2" hidden><label>Kode dari email<input value="000000" disabled></label><label>Nama<input value="Pembeli Contoh" disabled></label><label>WhatsApp <small>Boleh kosong</small><input value="080000000000" disabled></label><b>Ukuran saya</b><div class="pil" id="uk" style="margin-top:8px"></div>
+<label class="opsi"><input type="checkbox" id="c1"><span>Kabari saya kalau ukuran ini datang<small>Lewat email</small></span></label><label class="opsi"><input type="checkbox"><span>Kirimi juga promo<small>Boleh dimatikan kapan saja</small></span></label><button class="btn penuh">Selesai</button></form></main><footer></footer>
+<script src="data.js"></script><script>const $$=s=>[...document.querySelectorAll(s)];kerangka('masuk');
+const pra=+location.hash.slice(1);[40,41,42,43,44].forEach(x=>{const e=document.createElement('button');e.type='button';e.textContent=x;e.setAttribute('aria-pressed',x===pra);e.onclick=()=>e.setAttribute('aria-pressed',e.getAttribute('aria-pressed')!=='true');$('#uk').append(e)});
+if(pra){$('#j').textContent='Kabari saya ukuran '+pra;$('#k').textContent='Masukkan email, lalu kami kabari begitu sepatu ukuran '+pra+' tayang.';$('#c1').checked=true}
+$('#f1').onsubmit=e=>{e.preventDefault();$('#f1').hidden=true;$('#f2').hidden=false};$('#f2').onsubmit=e=>{e.preventDefault();setMasuk(1);location.href='akun.html'};</script></body></html>

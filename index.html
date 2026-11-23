@@ -24,7 +24,7 @@ nav{margin-left:auto;display:flex;gap:22px}nav a{color:var(--teks);text-decorati
 #saring h1{font-size:22px;font-stretch:108%;font-weight:700;margin:0 14px 0 0;letter-spacing:-.01em}
 .uk{min-width:44px;height:40px;border:1px solid var(--garis);border-radius:6px;padding:0 11px;color:var(--teks)}
 .uk[aria-pressed=true]{background:var(--teks);color:var(--tinta);font-weight:700;border-color:var(--teks)}
-#hitung{color:var(--redup);margin-left:8px}
+#hitung{color:var(--redup);margin-left:8px}#kabari{color:#9cc7ff;min-height:40px;display:flex;align-items:center;white-space:nowrap;padding:0 6px}#kabari[hidden]{display:none}
 #dinding{position:absolute;left:0;right:0;top:150px;bottom:70px;transform-origin:0 0;transition:transform var(--gerak)}
 #rak{height:100%;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(2,1fr);max-height:560px;padding:0 4vw;column-gap:2.2vw}
 .slot{position:relative;display:block;width:100%;padding:0;text-align:left;transition:opacity .5s}
@@ -90,6 +90,7 @@ fieldset{border:0;padding:0;margin:20px 0}legend{font-weight:700;margin-bottom:8
  .slot{flex:0 0 74vw;scroll-snap-align:center;height:100%}
  .isi{bottom:34%}.slot .kerucut{display:block!important;height:66%;top:-30px;opacity:.25}.slot.nyala .kerucut{opacity:1}
  .kartu{font-size:17px;top:calc(100% + 24px)}.kartu .stt{top:27px;font-size:14.5px}
+ #kabari:not([hidden]){position:fixed;top:116px;left:10px;min-height:44px;text-decoration:underline}
  body.detail #dinding{opacity:0;pointer-events:none}#dinding{transition:opacity .3s}
  #judul{left:16px;right:16px;top:70px;max-width:none}#judul h2{font-size:30px;margin:10px 0 2px}
  #panel{scrollbar-width:thin;scrollbar-color:#ffffff40 #0000;left:0;right:0;top:auto;bottom:0;width:auto;height:52%;max-height:none;border-radius:14px 14px 0 0;padding:20px 18px 28px}
@@ -101,7 +102,7 @@ fieldset{border:0;padding:0;margin:20px 0}legend{font-weight:700;margin-bottom:8
 </style>
 </head>
 <body>
-<header><span class="merek">MHB<i>/</i>STORE</span><span class="contoh">Contoh<span class="lebar"> rancangan, data bukan asli</span></span><nav class="pc"><a href="lacak.html">Lacak</a><a href="info.html">Bantuan</a></nav><button id="tasBtn">Tas (0)</button></header>
+<header><span class="merek">MHB<i>/</i>STORE</span><span class="contoh">Contoh<span class="lebar"> rancangan, data bukan asli</span></span><nav class="pc"><a href="lacak.html">Lacak</a><a href="info.html">Bantuan</a><a href="masuk.html" id="msk">Masuk</a></nav><button id="tasBtn">Tas (0)</button></header>
 <div id="adegan">
   <div id="saring"><h1>Ukuran saya</h1></div>
   <div id="dinding"><div id="rak"></div></div>
@@ -126,9 +127,9 @@ B.forEach(b=>{const e=document.createElement('button');e.className='slot'+(b.lak
  e.onfocus=()=>{if(!ponsel()&&!b.laku)e.classList.add('nyala')};
  e.onclick=()=>location.hash='#/'+b.id;slot[b.id]=e;rak.append(e)});
 [null,40,41,42,43,44].forEach(u=>{const e=document.createElement('button');e.className='uk';e.textContent=u||'Semua';e.setAttribute('aria-pressed',u===null);e.onclick=()=>{ukuran=u;document.querySelectorAll('.uk').forEach(x=>x.setAttribute('aria-pressed',x===e));saring()};$('#saring').append(e)});
-$('#saring').insertAdjacentHTML('beforeend','<span id="hitung" aria-live="polite"></span>');
+$('#saring').insertAdjacentHTML('beforeend','<span id="hitung" aria-live="polite"></span><a id="kabari" hidden></a>');
 const hp=()=>matchMedia('(max-width:760px)').matches,tampil=()=>B.filter(b=>!ukuran||b.u===ukuran);let rakKe=0,ujung=0;
-function saring(tetap){const t=tampil();ujung=Math.max(0,Math.ceil(t.length/10)-1);rakKe=tetap===true?Math.min(rakKe,ujung):0;const l=hp()?t:t.slice(rakKe*10,rakKe*10+10);rak.replaceChildren(...l.map(b=>slot[b.id]));$('#pindah').hidden=hp()||!ujung;$('#ket').textContent=`Rak ${rakKe+1} dari ${ujung+1}`;$('#sblm').disabled=rakKe===0;$('#ssdh').disabled=rakKe===ujung;$('#hitung').textContent=t.filter(b=>!b.laku).length+' pasang tersedia';rak.scrollLeft=0;tengah()}
+function saring(tetap){const t=tampil();ujung=Math.max(0,Math.ceil(t.length/10)-1);rakKe=tetap===true?Math.min(rakKe,ujung):0;const l=hp()?t:t.slice(rakKe*10,rakKe*10+10);rak.replaceChildren(...l.map(b=>slot[b.id]));$('#pindah').hidden=hp()||!ujung;$('#ket').textContent=`Rak ${rakKe+1} dari ${ujung+1}`;$('#sblm').disabled=rakKe===0;$('#ssdh').disabled=rakKe===ujung;const kb=$('#kabari');kb.hidden=!ukuran;if(ukuran){kb.href='masuk.html#'+ukuran;kb.textContent='Kabari kalau ada '+ukuran+' baru'}$('#hitung').textContent=t.filter(b=>!b.laku).length+' pasang tersedia';rak.scrollLeft=0;tengah()}
 function tengah(){if(!matchMedia('(max-width:760px)').matches)return;const m=innerWidth/2;let d=1e9,p=null;[...rak.children].forEach(e=>{const r=e.getBoundingClientRect(),x=Math.abs(r.left+r.width/2-m);if(x<d){d=x;p=e}});[...rak.children].forEach(e=>e.classList.toggle('nyala',e===p&&!e.classList.contains('laku')))}
 rak.addEventListener('scroll',tengah,{passive:true});
 function kamera(){const w=$('#dinding');if(!kini||matchMedia('(max-width:760px)').matches){w.style.transform='';return}
@@ -164,7 +165,8 @@ addEventListener('hashchange',rute);let dulu=hp();addEventListener('resize',()=>
 $('#sblm').onclick=()=>{rakKe--;saring(true)};$('#ssdh').onclick=()=>{rakKe++;saring(true)};
 setInterval(()=>B.forEach(b=>{if(b.tahan>0){b.tahan--;if(kini===b){const j=$('#jam');if(b.tahan<=0)panel();else if(j)j.textContent=Math.floor(b.tahan/60)+':'+String(b.tahan%60).padStart(2,'0')}}}),1000);
 saring();isiTas();rute();
-$('#navHp').innerHTML=[['lacak','Lacak'],['info','Bantuan']].map(([h,t])=>`<a href="${h}.html">${t}</a>`).join('');
+if(sudahMasuk()){$('#msk').href='akun.html';$('#msk').textContent='Akun'}
+$('#navHp').innerHTML=[['lacak','Lacak'],['info','Bantuan'],[sudahMasuk()?'akun':'masuk',sudahMasuk()?'Akun':'Masuk']].map(([h,t])=>`<a href="${h}.html">${t}</a>`).join('');
 </script>
 </body>
 </html>

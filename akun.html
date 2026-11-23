@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Akun saya – MHB Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet"><link rel="stylesheet" href="gaya.css"></head>
+<body><p class="pita">Contoh rancangan. Tidak ada transaksi, jangan isi data asli.</p><header data-kop></header><main class="sempit"><div class="dua" style="align-items:center"><h1>Akun saya</h1><button class="btn garis" id="kel">Keluar</button></div><p class="ket">Pembeli Contoh, pembeli@contoh.id</p>
+<section class="kartu"><h2>Pesanan</h2><div class="baris"><div style="flex:1"><b>TK-7K3QX9</b><small>Suede Marun, di jalan</small></div><a class="btn garis" href="lacak.html">Lacak</a></div><div class="baris"><div style="flex:1"><b>TK-8S0YA3</b><small>Lari Merah, selesai</small></div><a class="btn garis" href="retur.html">Retur</a></div></section>
+<section class="kartu"><h2>Ukuran saya</h2><p class="ket">Kami mengabari saat ukuran ini tayang.</p><div class="pil" id="uk"></div><p role="status" id="p" style="margin:0"></p></section>
+<section class="kartu"><h2>Alamat</h2><p style="margin:0">Jalan Contoh No. 1, Coblong, Kota Bandung</p></section>
+<section class="kartu"><h2>Pemberitahuan dan data</h2><label class="opsi"><input type="checkbox" checked><span>Kabar ukuran</span></label><label class="opsi"><input type="checkbox"><span>Promo</span></label><button class="btn garis" id="hps">Hapus akun saya</button><p role="status" id="h" style="margin:12px 0 0"></p></section></main><footer></footer>
+<script src="data.js"></script><script>const $$=s=>[...document.querySelectorAll(s)];kerangka('akun');
+const pil=new Set([42]);[40,41,42,43,44].forEach(x=>{const e=document.createElement('button');e.textContent=x;e.setAttribute('aria-pressed',pil.has(x));e.onclick=()=>{pil.has(x)?pil.delete(x):pil.add(x);e.setAttribute('aria-pressed',pil.has(x));$('#p').textContent=pil.size?'Tersimpan: '+[...pil].sort().join(', '):'Tidak ada ukuran yang dipantau.'};$('#uk').append(e)});$('#kel').onclick=()=>{setMasuk(0);location.href='index.html'};$('#hps').onclick=()=>$('#h').textContent='Contoh: data akun dihapus. Catatan transaksi yang wajib disimpan tetap ada.';</script></body></html>
