@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Kabari saya – MHB Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet"><link rel="stylesheet" href="gaya.css"></head>
+<body class="gelap"><p class="pita">Contoh rancangan. Tidak ada transaksi, jangan isi data asli.</p><header data-kop></header><main><h1>Kabari saya</h1><p class="ket">Sebutkan sepatu yang dicari. Begitu ada yang cocok tayang, kami kabari. Tidak perlu akun.</p>
+<div class="cariin"><div class="rakk" id="rk"><div class="pajang cari-ini" id="pj"><span class="lampu kedip"></span><span id="sil"></span><span class="papan"></span><div class="ring" id="rg" role="status"></div></div></div>
+<form class="kartu" id="f"><b>Ukuran</b><small class="ket" style="display:block;margin:0">Boleh lebih dari satu</small><div class="pil" id="uk" style="margin-top:8px"></div><b>Model</b><div class="pil" id="md" style="margin-top:8px"></div>
+<label>Merek atau nama sepatu <small>Boleh kosong</small><input id="mr" autocomplete="off" placeholder="Contoh: kanvas hitam"></label>
+<label>Harga paling tinggi: <span id="hv"></span><input type="range" id="hg" min="100000" max="500000" step="25000" value="350000"></label>
+<b>Kondisi minimal</b><div class="pil" id="kd" style="margin-top:8px"></div>
+<label>Kabari lewat email<input value="pembeli@contoh.id" disabled></label><label>WhatsApp <small>Boleh kosong</small><input value="080000000000" disabled></label>
+<label class="opsi"><input type="checkbox"><span>Kirimi juga promo<small>Tanpa ini, kami hanya mengabari sepatu yang dicari</small></span></label>
+<button class="btn penuh" id="kr">Kabari saya</button><p id="p" role="status" style="margin:12px 0 0"></p></form></div>
+<div id="ada" hidden><h2>Sudah ada yang cocok sekarang</h2><div class="kisi" id="ks"></div></div></main><footer></footer>
+<script src="data.js"></script><script>const $$=s=>[...document.querySelectorAll(s)];kerangka('kabari');
+const MD={semua:'Semua',rendah:'Low',tinggi:'High',selip:'Slip-on',lari:'Lari'},[hu,hm]=location.hash.slice(1).split('/');
+const st={u:new Set(hu&&+hu?[+hu]:[]),m:MD[hm]?hm:'semua',k:'C'},W={rendah:['#8fa3b6','#b9c7d4','#c9d5e0','#6f8499'],tinggi:['#8fa3b6','#b9c7d4','#c9d5e0','#6f8499'],selip:['#8fa3b6','#b9c7d4','#c9d5e0','#6f8499'],lari:['#8fa3b6','#b9c7d4','#c9d5e0','#6f8499']};
+const tombol=(id,a,aktif,klik)=>a.forEach(([v,t])=>{const e=document.createElement('button');e.type='button';e.textContent=t;e.setAttribute('aria-pressed',aktif(v));e.onclick=()=>{klik(v);$$(id+' button').forEach((q,i)=>q.setAttribute('aria-pressed',aktif(a[i][0])));isi()};$(id).append(e)});
+let lama='';function isi(){const t=st.m==='semua'?'rendah':st.m,h=+$('#hg').value;$('#hv').textContent=rp(h);$('#pj').classList.remove('dapat');
+if(lama!==st.m){lama=st.m;$('#sil').innerHTML=sepatu({t,c:W[t]});$('#sil').classList.remove('ganti');void $('#sil').offsetWidth;$('#sil').classList.add('ganti')}
+$('#rg').textContent=(st.m==='semua'?'Model apa saja':MD[st.m])+' · '+(st.u.size?'EU '+[...st.u].sort().join(', '):'pilih ukuran')+' · sampai '+rp(h);
+const q=$('#mr').value.toLowerCase(),c=st.u.size?B.filter(b=>!b.laku&&!(b.tahan>0)&&st.u.has(b.u)&&(st.m==='semua'||b.t===st.m)&&b.h<=h&&b.k<=st.k&&(!q||q.split(' ').every(x=>b.n.toLowerCase().includes(x)))).slice(0,4):[];
+$('#ada').hidden=!c.length;$('#ks').innerHTML=c.map(ubin).join('');$('#kr').disabled=!st.u.size;$('#p').textContent=''}
+tombol('#uk',[40,41,42,43,44].map(x=>[x,x]),v=>st.u.has(v),v=>st.u.has(v)?st.u.delete(v):st.u.add(v));tombol('#md',Object.entries(MD),v=>st.m===v,v=>st.m=v);tombol('#kd',[['A','A saja'],['B','B ke atas'],['C','Semua']],v=>st.k===v,v=>st.k=v);
+$('#hg').oninput=$('#mr').oninput=isi;$('#f').onsubmit=e=>{e.preventDefault();$('#pj').classList.add('dapat');$('#kr').disabled=true;$('#p').textContent='Tercatat. Kami kabari begitu ada yang cocok. Contoh: email konfirmasi berisi tautan untuk berhenti.';if(innerWidth<800)$('#rk').scrollIntoView({block:'center',behavior:diam()?'auto':'smooth'})};isi();</script></body></html>
