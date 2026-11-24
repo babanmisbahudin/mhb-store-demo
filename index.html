@@ -39,9 +39,10 @@ nav{margin-left:auto;display:flex;gap:22px}nav a{color:var(--teks);text-decorati
 .papan:before{content:"";position:absolute;inset:5px 4% auto;height:3px;border-radius:3px;background:#fff3e6;box-shadow:0 0 8px 2px var(--oranye),0 6px 26px 8px var(--oranye);opacity:0;transition:opacity .35s}
 .papan:after{content:"";position:absolute;left:0;right:0;top:8px;height:70px;background:radial-gradient(50% 100% at 50% 0,#fc6a0cb0,#0000);opacity:0;transition:opacity .35s}
 .nyala .papan:before,.nyala .papan:after,.nyala .kursor{opacity:1}
-.kartu{position:absolute;left:0;right:0;top:calc(100% + 13px);display:flex;justify-content:space-between;gap:8px;align-items:baseline;z-index:4;font-size:13.5px;transition:opacity .3s;text-shadow:0 1px 4px #000b}
+.kartu{position:absolute;left:0;right:0;top:calc(100% + 13px);display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 8px;align-items:baseline;z-index:4;font-size:13.5px;transition:opacity .3s;text-shadow:0 1px 4px #000b}
 .kartu b{font-weight:600}.kartu span{white-space:nowrap}
-.kartu .stt{position:absolute;top:21px;left:0;font-size:12.5px;color:#d6e0ea}
+.kartu em{font-style:normal;white-space:nowrap;display:inline-block;margin-right:12px}
+.kartu .stt{flex:0 0 100%;white-space:normal!important;font-size:12.5px;color:#d6e0ea}
 .laku .isi svg{filter:grayscale(1) brightness(.42)}.laku .tepi{opacity:.25}
 .laku .kartu{color:var(--redup)}
 body.detail .kartu,body.detail .kerucut{opacity:0}
@@ -54,6 +55,7 @@ body.detail #judul,body.detail #panel{opacity:1;visibility:visible;transition-de
 #judul p{margin:0;color:#c9d5e1}
 .balik{border:1px solid var(--garis);border-radius:6px;padding:9px 14px;background:#0a121b80}
 #panel{right:32px;top:92px;max-height:calc(100% - 120px);width:348px;overflow:auto;background:#0b141eeb;border:1px solid var(--garis);border-radius:10px;padding:22px}
+.dobel{display:flex;gap:26px}.dobel span+span{padding-left:26px;border-left:1px solid var(--garis);font-weight:500;color:#d6e0ea}.dobel small{display:block;font-size:13.5px;font-weight:400;color:#b1bfcd;line-height:1.3}.dobel{font-size:24px!important}
 .harga{font-size:30px;font-weight:700;font-variant-numeric:tabular-nums}
 dl{display:grid;grid-template-columns:auto 1fr;gap:7px 16px;margin:16px 0;padding:16px 0;border:solid var(--garis);border-width:1px 0}
 dt{color:var(--redup)}dd{margin:0;text-align:right}
@@ -89,7 +91,7 @@ fieldset{border:0;padding:0;margin:20px 0}legend{font-weight:700;margin-bottom:8
  #rak{display:flex;max-height:none;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 13vw;gap:8vw;scrollbar-width:none}
  .slot{flex:0 0 74vw;scroll-snap-align:center;height:100%}
  .isi{bottom:34%}.slot .kerucut{display:block!important;height:66%;top:-30px;opacity:.25}.slot.nyala .kerucut{opacity:1}
- .kartu{font-size:17px;top:calc(100% + 24px)}.kartu .stt{top:27px;font-size:14.5px}
+ .kartu{font-size:17px;top:calc(100% + 24px)}.kartu .stt{font-size:15px}
  #kabari:not([hidden]){position:fixed;top:116px;left:10px;min-height:44px;text-decoration:underline}
  #panel{background:#0b141e!important}
  body.detail #dinding{opacity:0;pointer-events:none}#dinding{transition:opacity .3s}
@@ -120,7 +122,7 @@ fieldset{border:0;padding:0;margin:20px 0}legend{font-weight:700;margin-bottom:8
 let ukuran=null,kini=null,tas=ambilTas(),kurir=0;
 const rak=$('#rak'),slot={};
 B.forEach(b=>{const e=document.createElement('button');e.className='slot'+(b.laku?' laku':'');e.setAttribute('aria-label',`${b.n}, ukuran ${b.u}, ${rp(b.h)}, ${stt(b)}`);
- e.innerHTML=`<span class="kerucut"></span><span class="isi"><span class="tepi"></span>${sepatu(b)}<span class="kursor"></span><span class="papan"></span><span class="kartu"><b>${b.n}</b><span>${b.u} · ${rp(b.h)}</span><span class="stt">${stt(b)}</span></span></span>`;
+ e.innerHTML=`<span class="kerucut"></span><span class="isi"><span class="tepi"></span>${sepatu(b)}<span class="kursor"></span><span class="papan"></span><span class="kartu"><b>${b.n}</b><span>EU ${b.u}</span><span class="stt">${b.laku||b.tahan>0?stt(b):'<em>Web '+rp(b.h)+'</em>'+(diShopee(b)?'<em>Shopee '+rp(b.hs)+'</em>':'')}</span></span></span>`;
  e.onpointermove=v=>{const k=e.querySelector('.kursor'),r=k.getBoundingClientRect();k.style.setProperty('--x',v.clientX-r.left+'px');k.style.setProperty('--y',v.clientY-r.top+'px')};
  const ponsel=()=>matchMedia('(max-width:760px)').matches;
  e.onpointerenter=()=>{if(!ponsel()&&!b.laku)e.classList.add('nyala')};
@@ -147,8 +149,8 @@ function panel(){const b=kini;if(!b)return;$('#judul').innerHTML=`<button class=
  const di=tas.includes(b),m=Math.floor(b.tahan/60),d=String(b.tahan%60).padStart(2,'0');let a;
  if(b.laku)a='<button class="btn" disabled>Sudah terjual</button><button class="btn kedua" data-a="mirip">Lihat ukuran '+b.u+' lainnya</button><a class="btn kedua" style="color:inherit;text-decoration:none" href="kabari.html#'+b.u+'/'+b.t+'">Kabari yang mirip</a>';
  else if(b.tahan>0)a=`<button class="btn" disabled>Sedang dibayar, sisa <span id="jam">${m}:${d}</span></button><button class="btn kedua" data-a="kabar">Kabari kalau batal dibayar</button>`;
- else a=`<button class="btn utama" data-a="tas">${di?'Buka tas':'Beli di web'}</button>${diShopee(b)?'<button class="btn kedua" data-a="shopee">Beli di Shopee</button>':''}<p class="ket">${diShopee(b)?'Di web: QRIS, VA, e-wallet. Di Shopee: bayar dan ongkir diurus Shopee.':'Sepatu ini hanya ada di web.'} Barang baru ditahan saat checkout.</p>`;
- $('#panel').innerHTML=`<div class="harga">${rp(b.h)}</div><dl><dt>Ukuran</dt><dd>EU ${b.u}</dd><dt>Panjang insole</dt><dd>${b.in.toLocaleString('id-ID')} cm</dd><dt>Kondisi</dt><dd>${{A:'A, hampir tanpa bekas',B:'B, bekas pakai wajar',C:'C, ada cacat jelas'}[b.k]}</dd><dt>Berat kirim</dt><dd>${b.g.toLocaleString('id-ID')} gram</dd></dl><b>Catatan kondisi</b><ul class="cacat">${b.cc.map(x=>`<li>${x}</li>`).join('')}</ul>${a}<p class="ket"><a href="sepatu.html#${b.id}" style="color:#9cc7ff">Lihat semua foto</a></p><p class="ket" id="info" role="status"></p>`;
+ else a=`<button class="btn utama" data-a="tas">${di?'Buka tas':'Beli di web, '+rp(b.h)}</button>${diShopee(b)?'<button class="btn kedua" data-a="shopee">Beli di Shopee, '+rp(b.hs)+'</button>':''}<p class="ket">${diShopee(b)?'Di web: QRIS, VA, e-wallet. Di Shopee: bayar dan ongkir diurus Shopee. Harga belum termasuk ongkir.':'Sepatu ini hanya ada di web.'} Barang baru ditahan saat checkout.</p>`;
+ $('#panel').innerHTML=`<div class="harga dobel"><span><small>Web</small>${rp(b.h)}</span>${diShopee(b)?`<span><small>Shopee</small>${rp(b.hs)}</span>`:''}</div><dl><dt>Ukuran</dt><dd>EU ${b.u}</dd><dt>Panjang insole</dt><dd>${b.in.toLocaleString('id-ID')} cm</dd><dt>Kondisi</dt><dd>${{A:'A, hampir tanpa bekas',B:'B, bekas pakai wajar',C:'C, ada cacat jelas'}[b.k]}</dd><dt>Berat kirim</dt><dd>${b.g.toLocaleString('id-ID')} gram</dd></dl><b>Catatan kondisi</b><ul class="cacat">${b.cc.map(x=>`<li>${x}</li>`).join('')}</ul>${a}<p class="ket"><a href="sepatu.html#${b.id}" style="color:#9cc7ff">Lihat semua foto</a></p><p class="ket" id="info" role="status"></p>`;
  $('#panel').querySelectorAll('[data-a]').forEach(e=>e.onclick=()=>{const x=e.dataset.a,f=$('#info');
   if(x==='tas'){if(di){buka();return}const sumber=hp()?$('#besar svg'):slot[b.id].querySelector('.isi svg');tas.push(b);simpanTas(tas);panel();terbang(sumber,$('#tasBtn')).then(buka)}if(x==='mirip'){ukuran=b.u;document.querySelectorAll('.uk').forEach(q=>q.setAttribute('aria-pressed',q.textContent==b.u));location.hash='';saring()}
   if(x==='kabar')f.textContent='Contoh: pembeli akan menerima email bila barang tersedia lagi.';if(x==='shopee')f.textContent='Contoh: tombol ini membuka iklan sepatu tersebut di Shopee.';})}

@@ -39,8 +39,10 @@ function sepatu({t,c:[a,b,s,d]}){const i='s'+urut++;
 const K=[['J&T EZ','2–3 hari',14000],['JNE REG','2–4 hari',15000],['SiCepat BEST','1–2 hari',22000]];
 // iklan Shopee: aktif | siaga (sedang dibayar di web) | matikan (laku di web, iklan masih hidup) | nonaktif | belum (tidak diiklankan)
 B.forEach(b=>b.sp=b.laku?'nonaktif':b.tahan?'siaga':['court-pasir','slip-biru'].includes(b.id)?'belum':'aktif');
+// harga contoh: web (h) dan Shopee (hs) berdiri sendiri
+const naikSp=n=>Math.ceil(n*1.08/1000)*1000;B.forEach(b=>b.hs=b.sp==='belum'?0:naikSp(b.h));
 const diShopee=b=>b.sp==='aktif'&&!b.laku&&!(b.tahan>0);
-const stt=b=>b.laku?'Terjual':b.tahan>0?'Sedang dibayar orang lain':diShopee(b)?'Web atau Shopee':'Beli di web';
+const stt=b=>b.laku?'Terjual':b.tahan>0?'Sedang dibayar orang lain':diShopee(b)?'Shopee '+rp(b.hs):'Hanya di web';
 const ambilTas=()=>{try{return JSON.parse(localStorage.tasMhb||'[]').map(i=>B.find(b=>b.id===i)).filter(Boolean)}catch{return[]}};
 const simpanTas=t=>{try{localStorage.tasMhb=JSON.stringify(t.map(b=>b.id))}catch{}};
 const ubin=b=>`<a class="ubin${b.laku?' laku':''}" href="sepatu.html#${b.id}"><span class="foto">${sepatu(b)}</span><b>${b.n}</b><span class="dua"><span>EU ${b.u} · ${b.in.toLocaleString('id-ID')} cm</span><span>${rp(b.h)}</span></span><small>${stt(b)}</small></a>`;
@@ -95,10 +97,10 @@ const ARSIP=[
 const NM={rendah:'Low',tinggi:'High',selip:'Slip-on',lari:'Lari'},LEADS=[['Contoh Satu',42,'rendah',300000,'Kabari saya','Lead baru',1,0,'Hari ini'],['Contoh Dua',43,'lari',400000,'Kabari saya','Lead baru',1,1,'Hari ini'],['Contoh Tiga',41,'lari',250000,'Kabari saya','Lead baru',1,0,'Kemarin'],['Contoh Empat',41,'rendah',300000,'Kabari saya','Lead baru',1,0,'Kemarin'],['Contoh Lima',40,'tinggi',0,'Checkout belum dibayar','Lead baru',0,0,'2 hari lalu'],['Contoh Enam',42,'lari',0,'Kabari kalau batal','Dihubungi',0,0,'2 hari lalu'],['Contoh Tujuh',40,'lari',0,'Beli di web','Pembeli',0,0,'6 hari lalu'],
  ['Contoh Lima Belas',42,'tinggi',150000,'Kabari saya','Lead baru',1,0,'2 hari lalu'],['Contoh Enam Belas',42,'lari',300000,'Kabari saya','Lead baru',1,0,'3 hari lalu'],['Contoh Tujuh Belas',43,'rendah',300000,'Kabari saya','Lead baru',1,1,'3 hari lalu'],['Contoh Delapan Belas',42,'selip',150000,'Kabari saya','Lead baru',1,0,'4 hari lalu'],['Contoh Sembilan Belas',43,'tinggi',300000,'Kabari saya','Lead baru',1,0,'4 hari lalu'],['Contoh Dua Puluh',41,'tinggi',200000,'Kabari saya','Lead baru',1,0,'5 hari lalu'],['Contoh Dua Satu',44,'rendah',120000,'Kabari saya','Lead baru',1,0,'5 hari lalu'],['Contoh Dua Dua',40,'lari',200000,'Kabari saya','Lead baru',1,0,'6 hari lalu']];
 const cocok=x=>x[4]==='Kabari saya'?B.filter(b=>!b.laku&&!(b.tahan>0)&&b.u===x[1]&&b.t===x[2]&&b.h<=x[3]):[];
-ARSIP.forEach(b=>b.sp=['court-biru','lari-hitam'].includes(b.id)?'matikan':'nonaktif');
+ARSIP.forEach(b=>b.hs=naikSp(b.h));ARSIP.forEach(b=>b.sp=['court-biru','lari-hitam'].includes(b.id)?'matikan':'nonaktif');
 const brg=i=>B.find(b=>b.id===i)||ARSIP.find(b=>b.id===i),tot=o=>brg(o.b).h+o.o;
 const MENU=[['admin','Dasbor'],['admin-pesanan','Pesanan',O.filter(o=>o.s==='Dibayar').length],['admin-kirim','Pengiriman',O.filter(o=>o.s==='Dikemas').length],['admin-barang','Barang',[...B,...ARSIP].filter(b=>b.sp==='matikan').length],['admin-pelanggan','Pelanggan'],['admin-retur','Retur',1],['admin-laporan','Laporan'],['admin-atur','Pengaturan']];
 const WEB=[0,1,0,2,1,0,1,3,1,0,2,1,1,0,2,1,0,1,2,0,1,2,1,0,1,3,1,0,2,2],SHP=[1,0,1,0,0,2,1,0,1,0,0,1,0,2,0,0,1,1,0,0,1,0,1,0,0,1,1,0,1,0],HG=[291,385,165,295,340,210,320,135,230,365];
-const JUAL=(()=>{let k=0;const ambil=n=>{let s=0;for(let i=0;i<n;i++)s+=HG[k++%HG.length]*1000;return s};return WEB.map((w,i)=>{const d=new Date(2026,9,25+i);return{d,w,s:SHP[i],rw:ambil(w),rs:ambil(SHP[i])}})})();
+const JUAL=(()=>{let k=0;const ambil=(n,sp)=>{let s=0;for(let i=0;i<n;i++){const p=HG[k++%HG.length]*1000;s+=sp?naikSp(p):p}return s};return WEB.map((w,i)=>{const d=new Date(2026,9,25+i);return{d,w,s:SHP[i],rw:ambil(w),rs:ambil(SHP[i],1)}})})();
 const tgl=d=>d.toLocaleDateString('id-ID',{day:'numeric',month:'short'}),jum=(a,f)=>a.reduce((x,y)=>x+f(y),0),rb=n=>n>=1e6?'Rp'+(n/1e6).toLocaleString('id-ID',{maximumFractionDigits:1})+' jt':n>=1e3?'Rp'+Math.round(n/1e3)+' rb':'Rp'+n;
 const WRN={Dibayar:'awas',Selesai:'ok',Bermasalah:'buruk'};
