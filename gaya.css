@@ -144,3 +144,9 @@ tr.pilih td{background:#ffffff0d}td small{display:block;color:var(--redup);font-
 @media(max-width:800px){.atas .cr{flex:1 1 auto;width:auto}[data-admin]{gap:12px!important}.atas{gap:8px}table.susun td[data-l=Sepatu]{white-space:normal}}
 .adm main{overflow-x:clip}
 @media(max-width:800px){[data-admin]{flex-wrap:wrap!important}.atas{display:contents}.atas .cr{order:3;flex:1 0 100%}.atas .btn{margin-left:auto}}
+/* lampu selalu muat di dalam rak: diikat dari atas, bukan dari bawah */
+.rakk{--naung:150px;padding-top:var(--naung);margin-top:-84px}.cariin .rakk{--naung:170px;padding-top:var(--naung);margin-top:-60px}
+.rakk .pajang .lampu,.rakk .pajang.kosong .lampu{top:calc(34px - var(--naung));bottom:52px;height:auto}.rakk .pajang.kosong .lampu{bottom:4px}
+.gelap nav.bawah{background:#0a121b}
+@media(max-width:800px){.rakk,.cariin .rakk{--naung:140px;margin:-66px -16px 10px;padding:var(--naung) 22px 24px}}
+@media(max-width:800px){#ck{padding-left:16px;padding-right:16px}}
