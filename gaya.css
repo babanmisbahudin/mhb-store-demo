@@ -150,3 +150,7 @@ tr.pilih td{background:#ffffff0d}td small{display:block;color:var(--redup);font-
 .gelap nav.bawah{background:#0a121b}
 @media(max-width:800px){.rakk,.cariin .rakk{--naung:140px;margin:-66px -16px 10px;padding:var(--naung) 22px 24px}}
 @media(max-width:800px){#ck{padding-left:16px;padding-right:16px}}
+
+.rs{margin:0 0 10px;font-size:14.5px}.rs input{min-height:44px!important}.tk .btn+.btn{margin-top:8px}.tk .btn:not(.garis){background:var(--oranye)}.galat{color:#ffc9a3;font-size:14px;margin:8px 0 0}.tk .kotak{width:78%;margin:0 auto -2px;z-index:2}.tk .kotak .kt{transform:none}.tk .kotak .ks{display:none}
+.tk{transition:transform .45s cubic-bezier(.5,0,.8,.3),opacity .45s}.tk.pindah{transform:translateX(60px);opacity:0}
+.rakmini .kotak>svg{position:absolute;inset:0;width:100%;margin:0;filter:none}.rakmini .kotak{width:72%}
