@@ -4,7 +4,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet"><link rel="stylesheet" href="gaya.css"></head>
 <body class="gelap adm"><p class="pita">Contoh rancangan. Tidak ada transaksi, jangan isi data asli.</p><header data-admin></header><main><h1>Pelanggan</h1><p class="ket">Leads adalah orang yang tertarik tetapi belum membeli.</p><h2 class="jdl-rak">Permintaan yang sudah ada sepatunya</h2><div class="rakk" id="ck"></div><div class="pil" id="t"></div><div class="pil" id="u" aria-label="Ukuran"></div>
 <div class="bagi"><div class="kartu gulung"><table class="susun"><thead><tr><th>Nama</th><th>Dicari</th><th>Asal</th><th>Status</th><th></th></tr></thead><tbody id="b"></tbody></table><p class="ket" id="ks" style="margin:0" hidden>Belum ada yang cocok dengan saringan ini.</p></div><aside class="kartu" id="d"></aside></div></main><footer></footer>
-<script src="data.js"></script><script>const $$=s=>[...document.querySelectorAll(s)];kerangka('admin-pelanggan');
+<script src="data.js"></script><script src=admin-data.js></script><script>const $$=s=>[...document.querySelectorAll(s)];kerangka('admin-pelanggan');
 const M=NM,P=LEADS;
 let s='Leads',u=null,p=P[0];const lead=x=>x[5]!=='Pembeli';
 const tab=(id,a,f,kini)=>a.forEach(x=>{const e=document.createElement('button');e.textContent=x===null?'Semua ukuran':x;e.setAttribute('aria-pressed',x===kini);e.onclick=()=>{f(x);$$(id+' button').forEach(q=>q.setAttribute('aria-pressed',q===e));isi()};$(id).append(e)});

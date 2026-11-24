@@ -171,3 +171,12 @@ s{opacity:.65;font-weight:400}.dobel s{display:block;font-size:14px}.label-h{pos
 #d textarea{min-height:0}.hsl button:hover{border-color:#fff}
 @media(max-width:800px){.tiket{flex-wrap:wrap}.sobek{flex:1 0 100%;flex-direction:row;align-items:center;justify-content:space-between;padding:12px 16px;border-right:0;border-bottom:2px dashed #ffffff4d}.fukartu{flex-wrap:wrap;gap:10px 14px;padding:14px}.fukartu .rakmini{width:78px}.fukartu>span:nth-child(2){flex:1 0 55%}}
 @media(prefers-reduced-motion:reduce){.label-h,.kode.goyah{animation:none!important}}
+
+/* modal & distributor */
+.ung{color:#a9e5c4;font-weight:600;white-space:nowrap}.ung.tipis{color:#ffd9a3}.ung.rugi{color:#ffb4aa}.modal-k{border-top:1px dashed #ffffff3d;margin-top:12px;padding-top:10px}.hitung{border:1px dashed #ffffff4d;border-radius:8px;padding:12px 14px;margin-bottom:14px;color:var(--redup)}.hitung .jml{color:var(--tinta)}
+.brg .nm{display:inline-block;vertical-align:middle}.brg td:first-child{white-space:nowrap}.brg td:nth-child(4) .btn{margin:8px 0 0;display:block}.brg td:nth-child(6){min-width:0}
+.pdb{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center;padding:8px 0}.pdb small{display:block;color:var(--redup);font-size:13.5px}.pdb i{display:inline-block;height:14px;border-radius:0 4px 4px 0;vertical-align:middle;margin:0;min-width:2px}.pdb em{font-style:normal;margin-left:8px;font-size:14.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.kecilan{display:flex;flex-wrap:wrap;gap:12px 6px;margin-top:8px}.kecilan small{display:block;color:var(--redup);font-size:13px}.kecilan .mini{margin-right:6px}
+@media(max-width:800px){table.susun.brg td[data-l=Modal]:before{content:"Modal ";color:var(--redup);font-size:14px}table.susun.brg td[data-l=Shopee]{text-align:right}table.susun.brg td[data-l=Web]{align-self:start;text-align:left}table.susun.brg td[data-l=Web]:before{display:block}.brg td:first-child{white-space:normal}.pdb{grid-template-columns:120px 1fr}}
+.btgd{display:flex;align-items:center;min-width:0}.btgd i{flex:none;max-width:60%}
+.gelap .tanda.buruk{background:#7a221a;color:#ffd9d4}
