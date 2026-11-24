@@ -1,22 +1,22 @@
 // Data contoh & gambar sementara. Prototipe buang-pakai, bukan kode produksi.
 const B=[
- {id:'court-navy',n:'Court Navy',t:'rendah',c:['#2c4464','#f1efe9','#e9e6dd','#1b2c44'],u:42,in:26.5,k:'A',h:291000,g:900,j:'web',cc:['Bekas lipatan halus di bagian jari']},
- {id:'kanvas-tinggi',n:'Kanvas Tinggi Hitam',t:'tinggi',c:['#2a2d33','#e8e3d6','#f4f2ec','#14161a'],u:43,in:27.5,k:'B',h:491000,g:1200,j:'web',cc:['Sol sedikit menguning','Goresan 1 cm di ujung kiri']},
- {id:'slip-kotak',n:'Slip-on Kotak',t:'selip',c:['#1c2530','#f3efe6','#f4f2ec','#e0b63a'],u:40,in:25.5,k:'B',h:81000,g:700,j:'shopee',cc:['Warna kain sedikit pudar']},
- {id:'lari-mint',n:'Lari Mint',t:'lari',c:['#8fd0c2','#f4f6f4','#f7f7f3','#3f8f84'],u:42,in:26.5,k:'A',h:385000,g:950,j:'web',tahan:23*60,cc:['Tidak ada cacat berarti']},
- {id:'suede-marun',n:'Suede Marun',t:'rendah',c:['#8d2b36','#23314a','#efe9dc','#e3c22b'],u:41,in:26,k:'B',h:295000,g:950,j:'web',cc:['Suede mengilap di tumit','Tali pengganti']},
- {id:'lari-abu',n:'Lari Abu',t:'lari',c:['#aab3bd','#e9edf0','#f3f3f0','#ff7a2a'],u:44,in:28,k:'A',h:340000,g:980,j:'web',cc:['Tidak ada cacat berarti']},
- {id:'tinggi-krem',n:'Tinggi Krem',t:'tinggi',c:['#dccba6','#f7f3e8','#f4efe2','#9a6b3c'],u:42,in:26.5,k:'C',h:165000,g:1150,j:'web',cc:['Lem sol kiri sudah diperbaiki','Noda di lidah sepatu']},
- {id:'court-putih',n:'Court Putih',t:'rendah',c:['#f0efeb','#2f6fc4','#f6f4ee','#2f6fc4'],u:43,in:27.5,k:'A',h:310000,g:900,j:'shopee',cc:['Garis halus di ujung']},
- {id:'lari-merah',n:'Lari Merah',t:'lari',c:['#c41f46','#f3eef0','#fbf9f6','#7d1030'],u:40,in:25.5,k:'B',h:225000,g:920,j:'web',laku:1,cc:['Bekas pakai wajar']},
- {id:'selip-hijau',n:'Slip-on Zaitun',t:'selip',c:['#69743f','#e9dfc4','#f1ead6','#c9b27a'],u:41,in:26,k:'A',h:120000,g:700,j:'web',cc:['Tidak ada cacat berarti']},
- {id:'court-hijau',n:'Court Hijau',t:'rendah',c:['#2f5d4a','#efe9dc','#f3efe6','#1d3b2f'],u:42,in:26.5,k:'B',h:210000,g:900,j:'web',cc:['Bekas lipatan di jari']},
- {id:'lari-navy',n:'Lari Navy',t:'lari',c:['#2b3f66','#dfe6ef','#f7f7f3','#f08a3c'],u:43,in:27.5,k:'A',h:365000,g:960,j:'web',cc:['Tidak ada cacat berarti']},
- {id:'tinggi-merah',n:'Tinggi Merah',t:'tinggi',c:['#a5262b','#f4efe6','#f4efe2','#2a1d1d'],u:41,in:26,k:'B',h:275000,g:1180,j:'shopee',cc:['Goresan di ujung kanan']},
- {id:'slip-biru',n:'Slip-on Biru',t:'selip',c:['#274a7a','#efe9dc','#f4f2ec','#dfe6ef'],u:43,in:27.5,k:'A',h:135000,g:700,j:'web',cc:['Tidak ada cacat berarti']},
- {id:'court-pasir',n:'Court Pasir',t:'rendah',c:['#c9b28a','#6b4a2f','#f1ead9','#7a5637'],u:44,in:28,k:'C',h:98000,g:920,j:'web',cc:['Sol kanan aus','Noda di sisi dalam']},
- {id:'lari-kuning',n:'Lari Kuning',t:'lari',c:['#e4c33a','#2b2f36','#f7f5ee','#2b2f36'],u:40,in:25.5,k:'B',h:230000,g:930,j:'web',cc:['Warna sol sedikit kusam']},
- {id:'tinggi-abu',n:'Tinggi Abu',t:'tinggi',c:['#8d97a1','#eceff2','#f3f3f0','#4c5661'],u:40,in:25.5,k:'A',h:320000,g:1160,j:'web',cc:['Tidak ada cacat berarti']}];
+ {id:'court-navy',n:'Court Navy',t:'rendah',c:['#2c4464','#f1efe9','#e9e6dd','#1b2c44'],u:42,in:26.5,k:'A',h:291000,g:900,cc:['Bekas lipatan halus di bagian jari']},
+ {id:'kanvas-tinggi',n:'Kanvas Tinggi Hitam',t:'tinggi',c:['#2a2d33','#e8e3d6','#f4f2ec','#14161a'],u:43,in:27.5,k:'B',h:491000,g:1200,cc:['Sol sedikit menguning','Goresan 1 cm di ujung kiri']},
+ {id:'slip-kotak',n:'Slip-on Kotak',t:'selip',c:['#1c2530','#f3efe6','#f4f2ec','#e0b63a'],u:40,in:25.5,k:'B',h:81000,g:700,cc:['Warna kain sedikit pudar']},
+ {id:'lari-mint',n:'Lari Mint',t:'lari',c:['#8fd0c2','#f4f6f4','#f7f7f3','#3f8f84'],u:42,in:26.5,k:'A',h:385000,g:950,tahan:23*60,cc:['Tidak ada cacat berarti']},
+ {id:'suede-marun',n:'Suede Marun',t:'rendah',c:['#8d2b36','#23314a','#efe9dc','#e3c22b'],u:41,in:26,k:'B',h:295000,g:950,cc:['Suede mengilap di tumit','Tali pengganti']},
+ {id:'lari-abu',n:'Lari Abu',t:'lari',c:['#aab3bd','#e9edf0','#f3f3f0','#ff7a2a'],u:44,in:28,k:'A',h:340000,g:980,cc:['Tidak ada cacat berarti']},
+ {id:'tinggi-krem',n:'Tinggi Krem',t:'tinggi',c:['#dccba6','#f7f3e8','#f4efe2','#9a6b3c'],u:42,in:26.5,k:'C',h:165000,g:1150,cc:['Lem sol kiri sudah diperbaiki','Noda di lidah sepatu']},
+ {id:'court-putih',n:'Court Putih',t:'rendah',c:['#f0efeb','#2f6fc4','#f6f4ee','#2f6fc4'],u:43,in:27.5,k:'A',h:310000,g:900,cc:['Garis halus di ujung']},
+ {id:'lari-merah',n:'Lari Merah',t:'lari',c:['#c41f46','#f3eef0','#fbf9f6','#7d1030'],u:40,in:25.5,k:'B',h:225000,g:920,laku:1,cc:['Bekas pakai wajar']},
+ {id:'selip-hijau',n:'Slip-on Zaitun',t:'selip',c:['#69743f','#e9dfc4','#f1ead6','#c9b27a'],u:41,in:26,k:'A',h:120000,g:700,cc:['Tidak ada cacat berarti']},
+ {id:'court-hijau',n:'Court Hijau',t:'rendah',c:['#2f5d4a','#efe9dc','#f3efe6','#1d3b2f'],u:42,in:26.5,k:'B',h:210000,g:900,cc:['Bekas lipatan di jari']},
+ {id:'lari-navy',n:'Lari Navy',t:'lari',c:['#2b3f66','#dfe6ef','#f7f7f3','#f08a3c'],u:43,in:27.5,k:'A',h:365000,g:960,cc:['Tidak ada cacat berarti']},
+ {id:'tinggi-merah',n:'Tinggi Merah',t:'tinggi',c:['#a5262b','#f4efe6','#f4efe2','#2a1d1d'],u:41,in:26,k:'B',h:275000,g:1180,cc:['Goresan di ujung kanan']},
+ {id:'slip-biru',n:'Slip-on Biru',t:'selip',c:['#274a7a','#efe9dc','#f4f2ec','#dfe6ef'],u:43,in:27.5,k:'A',h:135000,g:700,cc:['Tidak ada cacat berarti']},
+ {id:'court-pasir',n:'Court Pasir',t:'rendah',c:['#c9b28a','#6b4a2f','#f1ead9','#7a5637'],u:44,in:28,k:'C',h:98000,g:920,cc:['Sol kanan aus','Noda di sisi dalam']},
+ {id:'lari-kuning',n:'Lari Kuning',t:'lari',c:['#e4c33a','#2b2f36','#f7f5ee','#2b2f36'],u:40,in:25.5,k:'B',h:230000,g:930,cc:['Warna sol sedikit kusam']},
+ {id:'tinggi-abu',n:'Tinggi Abu',t:'tinggi',c:['#8d97a1','#eceff2','#f3f3f0','#4c5661'],u:40,in:25.5,k:'A',h:320000,g:1160,cc:['Tidak ada cacat berarti']}];
 const rp=n=>'Rp'+n.toLocaleString('id-ID'),$=s=>document.querySelector(s);
 let urut=0;
 function sepatu({t,c:[a,b,s,d]}){const i='s'+urut++;
@@ -37,7 +37,10 @@ function sepatu({t,c:[a,b,s,d]}){const i='s'+urut++;
   o=`<path d="M142 64 Q154 34 176 38 Q192 44 198 76 L172 92Z" fill="${d}"/><path d="${u}" fill="${a}"/><path d="${u}" fill="url(#${i}p)"/><path d="M40 146 C34 122 22 98 30 72 Q34 60 48 66 C60 73 70 84 86 88 Q84 120 108 150Z" fill="${d}"/><path d="M308 109 C346 113 374 124 384 142 Q360 152 296 153 Q322 134 308 109Z" fill="${d}"/><path d="M112 150 C140 112 176 112 204 152 L190 152 C172 126 152 128 136 151Z" fill="${b}"/><path d="M176 152 C204 112 238 112 262 152 L248 152 C232 128 214 130 198 152Z" fill="${b}"/><path d="M142 76 Q162 42 182 58 C204 78 232 92 262 101 Q246 120 214 115 Q166 106 142 76Z" fill="${b}"/><path d="${u}" fill="url(#${i}g)"/><path d="M300 110Q314 132 290 153M92 92Q92 120 114 148" ${jh}/>${tali(168,62,5,17,9.5)}`+sol(z,`<path d="M30 166 C90 154 150 172 220 162 S340 162 390 150" fill="none" stroke="${d}" stroke-width="4"/><path d="M28 172 Q60 184 110 181 C170 182 220 178 270 172 C300 170 310 182 352 179 Q372 178 384 170" fill="none" stroke="#20242a" stroke-width="5"/>`)}
  return `<svg viewBox="10 0 390 184" aria-hidden="true">${def}${o}</svg>`}
 const K=[['J&T EZ','2–3 hari',14000],['JNE REG','2–4 hari',15000],['SiCepat BEST','1–2 hari',22000]];
-const stt=b=>b.laku?'Terjual':b.tahan>0?'Sedang dibayar orang lain':b.j==='shopee'?'Lewat Shopee':'Beli langsung';
+// iklan Shopee: aktif | siaga (sedang dibayar di web) | matikan (laku di web, iklan masih hidup) | nonaktif | belum (tidak diiklankan)
+B.forEach(b=>b.sp=b.laku?'nonaktif':b.tahan?'siaga':['court-pasir','slip-biru'].includes(b.id)?'belum':'aktif');
+const diShopee=b=>b.sp==='aktif'&&!b.laku&&!(b.tahan>0);
+const stt=b=>b.laku?'Terjual':b.tahan>0?'Sedang dibayar orang lain':diShopee(b)?'Web atau Shopee':'Beli di web';
 const ambilTas=()=>{try{return JSON.parse(localStorage.tasMhb||'[]').map(i=>B.find(b=>b.id===i)).filter(Boolean)}catch{return[]}};
 const simpanTas=t=>{try{localStorage.tasMhb=JSON.stringify(t.map(b=>b.id))}catch{}};
 const ubin=b=>`<a class="ubin${b.laku?' laku':''}" href="sepatu.html#${b.id}"><span class="foto">${sepatu(b)}</span><b>${b.n}</b><span class="dua"><span>EU ${b.u} · ${b.in.toLocaleString('id-ID')} cm</span><span>${rp(b.h)}</span></span><small>${stt(b)}</small></a>`;
@@ -83,17 +86,18 @@ const O=[
  {no:'TK-4M8RZ2',b:'lari-merah',s:'Bermasalah',ke:'Cigasong, Majalengka',k:'J&T EZ',o:14000,n:0,t:'17 Nov, 14.55',m:'VA BRI',p:'Contoh Empat Belas',ms:'Uang masuk setelah waktu habis, sepatu sudah terjual'}];
 // sepatu yang sudah laku dan sudah turun dari etalase
 const ARSIP=[
- {id:'court-biru',n:'Court Biru',t:'rendah',c:['#3f6ea5','#f1efe9','#f3efe6','#23466f'],u:42,in:26.5,k:'A',h:291000,g:900,j:'web',laku:1,cc:[]},
- {id:'lari-hitam',n:'Lari Hitam',t:'lari',c:['#3a4048','#e9edf0','#f3f3f0','#8a949e'],u:44,in:28,k:'A',h:340000,g:980,j:'web',laku:1,cc:[]},
- {id:'court-toska',n:'Court Toska',t:'rendah',c:['#2f8b86','#efe9dc','#f3efe6','#1c5a57'],u:42,in:26.5,k:'B',h:210000,g:900,j:'web',laku:1,cc:[]},
- {id:'court-bata',n:'Court Bata',t:'rendah',c:['#a4523a','#f1e4d3','#efe9dc','#5f2d1f'],u:41,in:26,k:'B',h:295000,g:950,j:'web',laku:1,cc:[]},
- {id:'tinggi-biru',n:'Tinggi Biru',t:'tinggi',c:['#3d5f94','#eceff2','#f3f3f0','#22395c'],u:40,in:25.5,k:'A',h:320000,g:1160,j:'web',laku:1,cc:[]}];
+ {id:'court-biru',n:'Court Biru',t:'rendah',c:['#3f6ea5','#f1efe9','#f3efe6','#23466f'],u:42,in:26.5,k:'A',h:291000,g:900,laku:1,cc:[]},
+ {id:'lari-hitam',n:'Lari Hitam',t:'lari',c:['#3a4048','#e9edf0','#f3f3f0','#8a949e'],u:44,in:28,k:'A',h:340000,g:980,laku:1,cc:[]},
+ {id:'court-toska',n:'Court Toska',t:'rendah',c:['#2f8b86','#efe9dc','#f3efe6','#1c5a57'],u:42,in:26.5,k:'B',h:210000,g:900,laku:1,cc:[]},
+ {id:'court-bata',n:'Court Bata',t:'rendah',c:['#a4523a','#f1e4d3','#efe9dc','#5f2d1f'],u:41,in:26,k:'B',h:295000,g:950,laku:1,cc:[]},
+ {id:'tinggi-biru',n:'Tinggi Biru',t:'tinggi',c:['#3d5f94','#eceff2','#f3f3f0','#22395c'],u:40,in:25.5,k:'A',h:320000,g:1160,laku:1,cc:[]}];
 // nama, ukuran, model, harga maks, asal, status, izin kabar, izin promo, terakhir
-const NM={rendah:'Low',tinggi:'High',selip:'Slip-on',lari:'Lari'},LEADS=[['Contoh Satu',42,'rendah',300000,'Kabari saya','Lead baru',1,0,'Hari ini'],['Contoh Dua',43,'lari',400000,'Kabari saya','Lead baru',1,1,'Hari ini'],['Contoh Tiga',41,'lari',250000,'Kabari saya','Lead baru',1,0,'Kemarin'],['Contoh Empat',41,'rendah',0,'Minta lewat Shopee','Lead baru',0,0,'Kemarin'],['Contoh Lima',40,'tinggi',0,'Checkout belum dibayar','Lead baru',0,0,'2 hari lalu'],['Contoh Enam',42,'lari',0,'Kabari kalau batal','Dihubungi',0,0,'2 hari lalu'],['Contoh Tujuh',40,'lari',0,'Beli di web','Pembeli',0,0,'6 hari lalu'],
+const NM={rendah:'Low',tinggi:'High',selip:'Slip-on',lari:'Lari'},LEADS=[['Contoh Satu',42,'rendah',300000,'Kabari saya','Lead baru',1,0,'Hari ini'],['Contoh Dua',43,'lari',400000,'Kabari saya','Lead baru',1,1,'Hari ini'],['Contoh Tiga',41,'lari',250000,'Kabari saya','Lead baru',1,0,'Kemarin'],['Contoh Empat',41,'rendah',300000,'Kabari saya','Lead baru',1,0,'Kemarin'],['Contoh Lima',40,'tinggi',0,'Checkout belum dibayar','Lead baru',0,0,'2 hari lalu'],['Contoh Enam',42,'lari',0,'Kabari kalau batal','Dihubungi',0,0,'2 hari lalu'],['Contoh Tujuh',40,'lari',0,'Beli di web','Pembeli',0,0,'6 hari lalu'],
  ['Contoh Lima Belas',42,'tinggi',150000,'Kabari saya','Lead baru',1,0,'2 hari lalu'],['Contoh Enam Belas',42,'lari',300000,'Kabari saya','Lead baru',1,0,'3 hari lalu'],['Contoh Tujuh Belas',43,'rendah',300000,'Kabari saya','Lead baru',1,1,'3 hari lalu'],['Contoh Delapan Belas',42,'selip',150000,'Kabari saya','Lead baru',1,0,'4 hari lalu'],['Contoh Sembilan Belas',43,'tinggi',300000,'Kabari saya','Lead baru',1,0,'4 hari lalu'],['Contoh Dua Puluh',41,'tinggi',200000,'Kabari saya','Lead baru',1,0,'5 hari lalu'],['Contoh Dua Satu',44,'rendah',120000,'Kabari saya','Lead baru',1,0,'5 hari lalu'],['Contoh Dua Dua',40,'lari',200000,'Kabari saya','Lead baru',1,0,'6 hari lalu']];
 const cocok=x=>x[4]==='Kabari saya'?B.filter(b=>!b.laku&&!(b.tahan>0)&&b.u===x[1]&&b.t===x[2]&&b.h<=x[3]):[];
+ARSIP.forEach(b=>b.sp=['court-biru','lari-hitam'].includes(b.id)?'matikan':'nonaktif');
 const brg=i=>B.find(b=>b.id===i)||ARSIP.find(b=>b.id===i),tot=o=>brg(o.b).h+o.o;
-const MENU=[['admin','Dasbor'],['admin-pesanan','Pesanan',O.filter(o=>o.s==='Dibayar').length],['admin-kirim','Pengiriman',O.filter(o=>o.s==='Dikemas').length],['admin-barang','Barang'],['admin-pelanggan','Pelanggan'],['admin-retur','Retur',1],['admin-laporan','Laporan'],['admin-atur','Pengaturan']];
+const MENU=[['admin','Dasbor'],['admin-pesanan','Pesanan',O.filter(o=>o.s==='Dibayar').length],['admin-kirim','Pengiriman',O.filter(o=>o.s==='Dikemas').length],['admin-barang','Barang',[...B,...ARSIP].filter(b=>b.sp==='matikan').length],['admin-pelanggan','Pelanggan'],['admin-retur','Retur',1],['admin-laporan','Laporan'],['admin-atur','Pengaturan']];
 const WEB=[0,1,0,2,1,0,1,3,1,0,2,1,1,0,2,1,0,1,2,0,1,2,1,0,1,3,1,0,2,2],SHP=[1,0,1,0,0,2,1,0,1,0,0,1,0,2,0,0,1,1,0,0,1,0,1,0,0,1,1,0,1,0],HG=[291,385,165,295,340,210,320,135,230,365];
 const JUAL=(()=>{let k=0;const ambil=n=>{let s=0;for(let i=0;i<n;i++)s+=HG[k++%HG.length]*1000;return s};return WEB.map((w,i)=>{const d=new Date(2026,9,25+i);return{d,w,s:SHP[i],rw:ambil(w),rs:ambil(SHP[i])}})})();
 const tgl=d=>d.toLocaleDateString('id-ID',{day:'numeric',month:'short'}),jum=(a,f)=>a.reduce((x,y)=>x+f(y),0),rb=n=>n>=1e6?'Rp'+(n/1e6).toLocaleString('id-ID',{maximumFractionDigits:1})+' jt':n>=1e3?'Rp'+Math.round(n/1e3)+' rb':'Rp'+n;
